@@ -1,4 +1,4 @@
-# KDP Mafia — Landing Page Demo Video Guide
+# KDP Profit Machine — Landing Page Demo Video Guide
 
 Ye guide tujhe step-by-step batati hai ki landing page ke liye ek high-converting
 demo video kaise banaye — kya search karna hai, kaun sa book banana hai, kaun sa
@@ -129,7 +129,7 @@ cover bhi bold aur readable hona chahiye. Ye demo me professional lagta hai.
 | 3 | Create | 20–45s | Publishing Studio me Word Search generate | "Ab book banao — 20+ book types, ek click." |
 | 4 | Output | 45–60s | KDP-ready PDF interior preview | "Publish-ready PDF. Koi design skill nahi chahiye." |
 | 5 | Cover | 60–75s | Cover Studio me cover generate | "Matching professional cover — AI se." |
-| 6 | CTA | 75–90s | Publishing Vault™ / Launch Kit™ + logo | "Start publishing today. Try KDP Mafia." |
+| 6 | CTA | 75–90s | Publishing Vault™ / Launch Kit™ + logo | "Start publishing today. Try KDP Profit Machine." |
 
 > Full journey ek continuous "wow" feel de: research → book → cover → ready to publish.
 
@@ -137,7 +137,7 @@ cover bhi bold aur readable hona chahiye. Ye demo me professional lagta hai.
 
 ## 7. Voiceover Script (agar voice add karna hai)
 
-> "Meet KDP Mafia — the fastest way to go from idea to a published book on Amazon.
+> "Meet KDP Profit Machine — the fastest way to go from idea to a published book on Amazon.
 >
 > Start with Market Intelligence. Type any topic and instantly get twenty scored
 > niche opportunities — so you build what actually sells.
@@ -150,7 +150,7 @@ cover bhi bold aur readable hona chahiye. Ye demo me professional lagta hai.
 > Package it into a Launch Kit with metadata, keywords and categories… and you're
 > ready to publish. That's it.
 >
-> KDP Mafia. Start publishing today."
+> KDP Profit Machine. Start publishing today."
 
 *(~35 seconds bolne me — visuals ke saath 60-90 sec fill ho jayega.)*
 

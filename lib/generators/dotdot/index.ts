@@ -140,7 +140,7 @@ export async function buildDotDotBook(opts: DotDotOptions): Promise<{ pageCount:
 
   const title = opts.title?.trim() || "Connect the Dots";
   const subtitle = opts.subtitle?.trim() || `${pageCount} Fun Dot-to-Dot Puzzles`;
-  const author = opts.author?.trim() || "KDP Mafia";
+  const author = opts.author?.trim() || "KDP Profit Machine";
 
   const pages: InteriorPageContent[] = [
     {

@@ -216,7 +216,7 @@ Per book, zipped with interior + cover:
 | 5 | Pass KDP First Time Upload Checklist + Rejection Fix | $47 | Avoid upload fails |
 
 > Bonus PDFs live in `/bonuses`. Sales images in `/bonuses/images/`.  
-> Branding on bonus materials may say **KDP Mafia** — keep **KDP Launchpad** as the product name on the main landing page unless deliberately rebranding.
+> Branding on bonus materials may say **KDP Profit Machine** — keep **KDP Launchpad** as the product name on the main landing page unless deliberately rebranding.
 
 ### Risk reversal
 - 30-day, no-questions money-back

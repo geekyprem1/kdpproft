@@ -1,9 +1,9 @@
-# KDP Mafia — Conversion-Optimized VSL Script
+# KDP Profit Machine — Conversion-Optimized VSL Script
 
 **Market:** United States  
 **Format:** Video Sales Letter  
 **Estimated runtime:** 7–8 minutes at 145–155 words per minute  
-**Primary CTA:** Get KDP Mafia at the current launch price
+**Primary CTA:** Get KDP Profit Machine at the current launch price
 
 > **Before recording:** Every claim marked `[VERIFY]` must be confirmed against the live product, checkout, license, and refund policy. Replace proof placeholders only with genuine, dated evidence. Never imply guaranteed income or guaranteed Amazon approval.
 
@@ -11,19 +11,19 @@
 
 ## 0:00–0:40 — Proof-First Hook
 
-**[ON SCREEN: Start with a keyword inside KDP Mafia. Rapidly show the resulting interior, cover, answer key, Launch Kit, and final exported files. If verified, end on the same sample inside Amazon KDP Print Previewer.]**
+**[ON SCREEN: Start with a keyword inside KDP Profit Machine. Rapidly show the resulting interior, cover, answer key, Launch Kit, and final exported files. If verified, end on the same sample inside Amazon KDP Print Previewer.]**
 
 **Voiceover:**
 
 Give me one keyword—and watch what happens.
 
-KDP Mafia helps turn it into a complete book project: the interior, a matching cover, verified answer pages where applicable, keywords, description, categories, and the files needed to prepare an Amazon KDP listing.
+KDP Profit Machine helps turn it into a complete book project: the interior, a matching cover, verified answer pages where applicable, keywords, description, categories, and the files needed to prepare an Amazon KDP listing.
 
 Not a random block of AI text. Not a broken puzzle with the wrong answer key. And not five disconnected tools you still have to piece together yourself.
 
 **[VERIFIED PROOF INSERT: Show one real project moving through the workflow. If substantiated, show the exported sample passing Amazon KDP Print Previewer with zero errors. Keep the project name visible so viewers can see it is the same file.]**
 
-This is KDP Mafia—the quality-first publishing studio built to help ordinary people move from an idea to professional publishing assets from one dashboard.
+This is KDP Profit Machine—the quality-first publishing studio built to help ordinary people move from an idea to professional publishing assets from one dashboard.
 
 And during this launch, you can get started for the current price shown below—starting at just **$17**. `[VERIFY LIVE PRICE]`
 
@@ -41,7 +41,7 @@ You research a niche in one place, write in another, design somewhere else, sear
 
 And rushing does not solve it. A book generated in minutes is worthless if the content is repetitive, the puzzle cannot be solved, the answer key is wrong, or the cover fails the upload check.
 
-That is why KDP Mafia is not built around the promise of producing throwaway books as fast as possible.
+That is why KDP Profit Machine is not built around the promise of producing throwaway books as fast as possible.
 
 It is built around a better process: **Research. Create. Verify. Package.**
 
@@ -58,7 +58,7 @@ Let me show you the four-step workflow.
 
 ### Step one: Research
 
-Enter a topic into Market Intelligence and KDP Mafia returns niche ideas scored across factors such as demand, competition, evergreen potential, and monetization. `[VERIFY DATA SOURCES AND SCORING]`
+Enter a topic into Market Intelligence and KDP Profit Machine returns niche ideas scored across factors such as demand, competition, evergreen potential, and monetization. `[VERIFY DATA SOURCES AND SCORING]`
 
 Instead of picking a topic completely at random, you get structured ideas, seasonality guidance, and a recommended book format. You can save the report and move a selected idea directly into production.
 
@@ -68,7 +68,7 @@ Choose from more than 20 supported formats—including word searches, Sudoku, ma
 
 Configure the theme, audience, difficulty, page size, and other project details. Then let the platform handle the heavy production work.
 
-For supported puzzle books, KDP Mafia uses deterministic generation and produces matching answer keys. That means Sudoku can be checked for a single solution, mazes can include a verified solved path, and word-search answers correspond to the actual grid. `[VERIFY EACH DEMONSTRATED FORMAT]`
+For supported puzzle books, KDP Profit Machine uses deterministic generation and produces matching answer keys. That means Sudoku can be checked for a single solution, mazes can include a verified solved path, and word-search answers correspond to the actual grid. `[VERIFY EACH DEMONSTRATED FORMAT]`
 
 **[PROOF INSERT: Show a generated puzzle and its matching solution side by side. Zoom in and verify it on screen.]**
 
@@ -76,13 +76,13 @@ For supported puzzle books, KDP Mafia uses deterministic generation and produces
 
 Move into Cover Studio to create cover concepts and prepare a KDP-ready wraparound file. The workflow accounts for details such as trim size, bleed, page count, paper choice, and spine width. `[VERIFY CURRENT COVER OPTIONS AND CALCULATIONS]`
 
-Then open the Launch Kit. KDP Mafia prepares supporting listing assets—including primary and long-tail keyword ideas, category recommendations, a book description, alternative titles, metadata, and a publishing checklist. `[VERIFY CURRENT OUTPUT COUNTS]`
+Then open the Launch Kit. KDP Profit Machine prepares supporting listing assets—including primary and long-tail keyword ideas, category recommendations, a book description, alternative titles, metadata, and a publishing checklist. `[VERIFY CURRENT OUTPUT COUNTS]`
 
 ### Step four: Export
 
 Preview the project and download the available interior, cover, ebook, and launch assets for your selected format. Everything stays organized inside the Publishing Vault and Asset Vault, so you can return to a project without hunting through folders.
 
-KDP Mafia does not click Amazon’s Publish button for you. You review the content, make any changes you want, follow Amazon’s current policies, and upload through your own KDP account.
+KDP Profit Machine does not click Amazon’s Publish button for you. You review the content, make any changes you want, follow Amazon’s current policies, and upload through your own KDP account.
 
 But instead of starting with a blank page, you arrive with an organized project and the core assets already prepared.
 
@@ -104,7 +104,7 @@ That makes testing and catalog building possible.
 
 One dinosaur activity book is one test. A focused collection for different age groups, themes, and difficulty levels gives you more listings, more relevant keywords, and more information about what readers want.
 
-KDP Mafia helps make that repeatable. Research an idea. Build a quality project. Publish responsibly. Learn from the result. Then improve or expand what works.
+KDP Profit Machine helps make that repeatable. Research an idea. Build a quality project. Publish responsibly. Learn from the result. Then improve or expand what works.
 
 **[OPTIONAL VERIFIED CASE STUDY: Include the customer’s name or approved identifier, exact date range, gross royalties versus profit, advertising costs, number of books, and a clear “results vary” caption.]**
 
@@ -115,7 +115,7 @@ KDP Mafia helps make that repeatable. Research an idea. Build a quality project.
 
 **Voiceover:**
 
-Here is what your KDP Mafia Commercial Edition includes today:
+Here is what your KDP Profit Machine Commercial Edition includes today:
 
 - **Market Intelligence** to explore and score potential book ideas.
 - **Title Optimizer** to generate and compare title variations.
@@ -165,7 +165,7 @@ No. Supported puzzle formats use structured generation and answer verification, 
 
 **“Will Amazon approve every book?”**
 
-No tool can honestly guarantee marketplace approval. Amazon makes the final decision, and its requirements can change. KDP Mafia is designed around current file specifications, and verified sample output can be shown passing Print Previewer—but you remain responsible for content quality, disclosure, rights, and policy compliance.
+No tool can honestly guarantee marketplace approval. Amazon makes the final decision, and its requirements can change. KDP Profit Machine is designed around current file specifications, and verified sample output can be shown passing Print Previewer—but you remain responsible for content quality, disclosure, rights, and policy compliance.
 
 **“What if it is not right for me?”**
 
@@ -184,11 +184,11 @@ You can keep stitching together research tools, writing apps, puzzle generators,
 
 Or you can start with one guided system built around the complete publishing workflow.
 
-KDP Mafia gives you the core platform, 120 starter credits, commercial-use rights under the included license, five quick-start resources, instant browser access, and a 30-day guarantee—for the current launch price shown below.
+KDP Profit Machine gives you the core platform, 120 starter credits, commercial-use rights under the included license, five quick-start resources, instant browser access, and a 30-day guarantee—for the current launch price shown below.
 
 If the verified dime-sale is active, the price increases as copies are sold, from **$17 toward $27**. The amount displayed at checkout is the price you will pay. `[VERIFY DIME-SALE MECHANISM]`
 
-Click the button below to get KDP Mafia.
+Click the button below to get KDP Profit Machine.
 
 Start with one keyword. Build one useful, quality-focused book project. Then use the same process to create, test, and improve a catalog over time.
 
@@ -196,9 +196,9 @@ There is no guarantee of royalties—and no substitute for good judgment, origin
 
 But you no longer have to let scattered tools, technical formatting, or a blank page stop you from beginning.
 
-Click below, secure KDP Mafia at the current launch price, and start preparing your first KDP project today.
+Click below, secure KDP Profit Machine at the current launch price, and start preparing your first KDP project today.
 
-**[CTA BUTTON: Get KDP Mafia at the Current Launch Price]**
+**[CTA BUTTON: Get KDP Profit Machine at the Current Launch Price]**
 
 **[TRUST LINE: One-Time Payment · 120 Starter Credits · Commercial License · 30-Day Guarantee · Instant Access — all subject to final verification]**
 
@@ -206,7 +206,7 @@ Click below, secure KDP Mafia at the current launch price, and start preparing y
 
 ## Mandatory Production and Compliance Checklist
 
-- [ ] Use **KDP Mafia** consistently in narration, UI overlays, checkout, logo, and support materials.
+- [ ] Use **KDP Profit Machine** consistently in narration, UI overlays, checkout, logo, and support materials.
 - [ ] Confirm the live front-end price, one-time-payment language, and dime-sale behavior immediately before recording.
 - [ ] Confirm that all advertised formats and features are live in the front-end Commercial Edition.
 - [ ] Record one continuous project journey; do not imply unrelated outputs came from the same generation.
@@ -220,7 +220,7 @@ Click below, secure KDP Mafia at the current launch price, and start preparing y
 - [ ] Do not claim Amazon rejects, flags, removes, or refunds AI-generated books as a category. Refer only to low-quality, misleading, or non-compliant content unless a precise claim is legally substantiated.
 - [ ] Do not promise income, passive income, bestseller status, acceptance, rankings, or specific results.
 - [ ] Keep roadmap and upgrade-only capabilities out of the core-edition demo.
-- [ ] Add this footer where required: “Amazon, Kindle, and KDP are trademarks of Amazon.com, Inc. or its affiliates. KDP Mafia is not affiliated with, endorsed by, or sponsored by Amazon.”
+- [ ] Add this footer where required: “Amazon, Kindle, and KDP are trademarks of Amazon.com, Inc. or its affiliates. KDP Profit Machine is not affiliated with, endorsed by, or sponsored by Amazon.”
 
 ## Editing Notes
 

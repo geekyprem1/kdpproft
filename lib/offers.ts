@@ -81,7 +81,7 @@ export const OFFERS: Offer[] = [
     featureReady: true,
     features: [
       "Niche & opportunity research",
-      "AI ebook + cover + title optimizer",
+      "AI ebook + cover + title lab",
       "Commercial license · 120 credits to start",
     ],
   },
@@ -182,8 +182,8 @@ export const OFFERS: Offer[] = [
     },
     featureReady: true,
     features: [
-      "Book Autopilot — auto niche, write, cover & package",
-      "Publishing Factory bulk queue",
+      "Autopilot — auto niche, write, cover & package",
+      "Profit Factory bulk queue",
       "1,500 credits",
     ],
   },

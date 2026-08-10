@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
   }
   if (!isAiConfigured()) {
     return NextResponse.json(
-      { error: "Book Autopilot needs OpenRouter — set OPENROUTER_API_KEY on the server." },
+      { error: "Autopilot needs OpenRouter — set OPENROUTER_API_KEY on the server." },
       { status: 503 }
     );
   }
@@ -154,7 +154,7 @@ export async function POST(req: NextRequest) {
     jobId = await enqueue(user.id, {
       jobType: "autopilot",
       bookType: "ebook",
-      title: `Book Autopilot · ${niche}`,
+      title: `Autopilot · ${niche}`,
       input: {
         runId,
         audience,

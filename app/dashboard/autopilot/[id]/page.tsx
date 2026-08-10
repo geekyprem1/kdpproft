@@ -75,9 +75,9 @@ export default async function AutopilotRunPage({ params }: { params: Promise<{ i
     <div className="mx-auto max-w-2xl">
       <AutoRefresh active={active} />
       <Link href="/dashboard/autopilot" className="text-sm text-neutral-500 hover:underline">
-        ← Book Autopilot
+        ← Autopilot
       </Link>
-      <h1 className="mt-1 text-2xl font-bold">Book Autopilot</h1>
+      <h1 className="mt-1 text-2xl font-bold">Autopilot</h1>
       <p className="text-sm text-neutral-600">
         Answer a few questions and we&apos;ll write 3 complete books — with covers — for you.
       </p>

@@ -1,5 +1,5 @@
 /**
- * KDP Mafia plans + feature gating. Plans and features are provider-agnostic —
+ * KDP Profit Machine plans + feature gating. Plans and features are provider-agnostic —
  * payment processors never appear here.
  */
 
@@ -40,11 +40,11 @@ export interface Plan {
 
 export const PLANS: Record<PlanKey, Plan> = {
   free: { key: "free", name: "Free Trial", price: 0, type: "free", monthlyCredits: 0, tier: 1, blurb: "Try the core generators" },
-  starter: { key: "starter", name: "KDP Mafia", price: 17, type: "one_time", monthlyCredits: 120, tier: 1, blurb: "Front End — Word Search, Sudoku, Maze, Launch Kit" },
-  pro: { key: "pro", name: "KDP Mafia Pro", price: 37, type: "one_time", monthlyCredits: 300, tier: 2, blurb: "Coloring books + premium covers" },
-  publisher: { key: "publisher", name: "KDP Mafia Publisher", price: 67, type: "one_time", monthlyCredits: 1000, tier: 3, blurb: "Ebooks + multi-format export" },
-  factory: { key: "factory", name: "KDP Mafia Factory", price: 97, type: "one_time", monthlyCredits: 2500, tier: 4, blurb: "Bulk + bundle production" },
-  agency: { key: "agency", name: "KDP Mafia Agency", price: 197, type: "one_time", monthlyCredits: 5000, tier: 5, blurb: "Unlimited projects, priority queue" },
+  starter: { key: "starter", name: "KDP Profit Machine", price: 17, type: "one_time", monthlyCredits: 120, tier: 1, blurb: "Front End — Word Search, Sudoku, Maze, Launch Kit" },
+  pro: { key: "pro", name: "KDP Profit Machine Pro", price: 37, type: "one_time", monthlyCredits: 300, tier: 2, blurb: "Coloring books + premium covers" },
+  publisher: { key: "publisher", name: "KDP Profit Machine Publisher", price: 67, type: "one_time", monthlyCredits: 1000, tier: 3, blurb: "Ebooks + multi-format export" },
+  factory: { key: "factory", name: "KDP Profit Machine Factory", price: 97, type: "one_time", monthlyCredits: 2500, tier: 4, blurb: "Bulk + bundle production" },
+  agency: { key: "agency", name: "KDP Profit Machine Agency", price: 197, type: "one_time", monthlyCredits: 5000, tier: 5, blurb: "Unlimited projects, priority queue" },
 };
 
 export const PLAN_ORDER: PlanKey[] = ["free", "starter", "pro", "publisher", "factory", "agency"];
@@ -74,8 +74,8 @@ export const FEATURE_TIER: Record<Feature, number> = {
   // a Publisher-tier OTO. Any offer granting the storybook entitlement unlocks it.
   storybook: 3,
   factory: 4,
-  // Book Autopilot writes 3 full ebooks per run — bulk production, same tier as
-  // the Publishing Factory.
+  // Autopilot writes 3 full ebooks per run — bulk production, same tier as
+  // the Profit Factory.
   autopilot: 4,
   // Cover Generator V2 is Beta and costs an order of magnitude more per cover than
   // V1, so it sits at the top tier. Any offer that grants the cover_v2 entitlement

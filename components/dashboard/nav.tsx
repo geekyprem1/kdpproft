@@ -9,8 +9,9 @@ import {
   Zap, ShieldCheck, LogOut, Gift, Users, Store, FlaskConical, type LucideIcon,
 } from "lucide-react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import { Logo } from "@/components/brand/logo";
 
-const GOLD = "#C9A84C";
+const GOLD = "#2563EB";
 
 interface NavItem {
   href: string;
@@ -21,12 +22,12 @@ interface NavItem {
 
 const MAIN: NavItem[] = [
   { href: "/dashboard", label: "Overview", icon: Home },
-  { href: "/dashboard/niche", label: "Market Intelligence™", icon: TrendingUp },
-  { href: "/dashboard/title-optimizer", label: "Title Optimizer", icon: Wand2 },
-  { href: "/dashboard/create", label: "Publishing Studio", icon: SquarePen },
-  { href: "/dashboard/bundle", label: "Publishing Factory™", icon: Factory },
-  { href: "/dashboard/autopilot", label: "Book Autopilot", icon: Bot },
-  { href: "/dashboard/cover", label: "Cover Studio", icon: ImageIcon },
+  { href: "/dashboard/niche", label: "Profit Radar™", icon: TrendingUp },
+  { href: "/dashboard/title-optimizer", label: "Title Lab", icon: Wand2 },
+  { href: "/dashboard/create", label: "Book Studio", icon: SquarePen },
+  { href: "/dashboard/bundle", label: "Profit Factory™", icon: Factory },
+  { href: "/dashboard/autopilot", label: "Autopilot", icon: Bot },
+  { href: "/dashboard/cover-v2", label: "Cover Studio", icon: ImageIcon },
   { href: "/dashboard/in-progress", label: "Production Queue", icon: ListChecks },
 ];
 
@@ -76,13 +77,11 @@ const LIBRARY: NavItem[] = [
 export function DashboardNav({
   email,
   isAdmin = false,
-  coverV2Enabled = false,
   hasAgency = false,
   hasReseller = false,
 }: {
   email?: string | null;
   isAdmin?: boolean;
-  coverV2Enabled?: boolean;
   hasAgency?: boolean;
   hasReseller?: boolean;
 }) {
@@ -129,31 +128,15 @@ export function DashboardNav({
   );
 
   return (
-    <aside className="flex w-60 shrink-0 flex-col border-r border-white/10 bg-gradient-to-b from-neutral-950 to-black">
-      <Link href="/dashboard" className="flex items-center gap-2 px-5 py-4">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/logo.png" alt="KDP Mafia" className="h-12 w-auto" />
+    <aside className="flex w-60 shrink-0 flex-col border-r border-white/10 bg-gradient-to-b from-[#0B1E3B] via-[#0A1830] to-[#071324]">
+      <Link href="/dashboard" className="flex items-center justify-center gap-2 px-5 py-5">
+        <Logo variant="dark" className="h-9 text-[15px]" />
       </Link>
 
       <nav className="flex flex-1 flex-col gap-0.5 overflow-y-auto px-3 pb-4">
         {MAIN.map((l) => (
           <Row key={l.href} item={l} active={mainActive(l.href)} />
         ))}
-
-        {coverV2Enabled && (
-          <Link
-            href="/dashboard/cover-v2"
-            className={`group relative flex items-center justify-between gap-2 rounded-lg px-3 py-2 text-sm transition-colors ${
-              pathname.startsWith("/dashboard/cover-v2") ? "bg-white/10 font-medium text-white" : "text-white/55 hover:bg-white/5 hover:text-white"
-            }`}
-          >
-            <span className="flex items-center gap-3">
-              <Sparkles className="h-[17px] w-[17px] shrink-0" style={pathname.startsWith("/dashboard/cover-v2") ? { color: GOLD } : undefined} />
-              Cover Studio V2
-            </span>
-            <span className="rounded-full px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide" style={{ background: `${GOLD}22`, color: GOLD }}>Beta</span>
-          </Link>
-        )}
 
         {GEN_GROUPS.map((group) => (
           <div key={group.label}>
@@ -192,8 +175,8 @@ export function DashboardNav({
 
         <Link
           href="/dashboard/upgrade"
-          className="mt-4 flex items-center justify-center gap-2 rounded-lg px-3 py-2.5 text-sm font-bold text-black transition-opacity hover:opacity-90"
-          style={{ background: `linear-gradient(135deg, ${GOLD}, #b8973f)` }}
+          className="mt-4 flex items-center justify-center gap-2 rounded-lg px-3 py-2.5 text-sm font-bold text-white transition-opacity hover:opacity-90"
+          style={{ background: `linear-gradient(135deg, ${GOLD}, #1D4ED8)` }}
         >
           <Zap className="h-4 w-4" /> Upgrade &amp; Add-ons
         </Link>

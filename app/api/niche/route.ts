@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
     country: typeof body.country === "string" ? body.country.trim() : undefined,
   };
 
-  const cost = 1; // Market Intelligence™
+  const cost = 1; // Profit Radar™
   try {
     await assertFeature(user.id, "market_intelligence");
     await reserve(user.id, cost, "niche");

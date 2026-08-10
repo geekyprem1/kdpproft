@@ -9,7 +9,7 @@ import { writeChapter, wordCount } from "../../ai/chapter";
 import { generateMetadata } from "../../ai/metadata";
 import { buildEbookCover } from "./cover";
 
-const DEFAULT_AUTHOR = "KDP Mafia";
+const DEFAULT_AUTHOR = "KDP Profit Machine";
 const CONCURRENCY = 4;
 
 const clamp = (n: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, Math.round(n)));

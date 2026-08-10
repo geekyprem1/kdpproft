@@ -1,13 +1,13 @@
 # BONUS #1 — First Book in 24 Hours Quickstart Playbook
 
-**Product:** KDP Mafia  
+**Product:** KDP Profit Machine  
 **Perceived value:** $47  
 **Goal:** Login → first upload-ready Amazon book in one day  
 **Who this is for:** New publishers, WarriorPlus buyers, anyone who freezes after getting access
 
 ---
 
-## Welcome to KDP Mafia
+## Welcome to KDP Profit Machine
 
 Most people buy a KDP tool, get excited… then spend three days “researching,” never publish, and refund.
 
@@ -16,7 +16,7 @@ This playbook exists to stop that.
 Today you will:
 
 1. Pick **one** niche  
-2. Generate **one** book inside **KDP Mafia**  
+2. Generate **one** book inside **KDP Profit Machine**  
 3. Upload it to Amazon KDP  
 4. Hit publish (or save a complete draft with files attached)
 
@@ -55,7 +55,7 @@ Total focused work: **about 3–6 hours**. The rest of the “24 hours” is bre
 
 Open these tabs:
 
-- [ ] **KDP Mafia** (logged in)
+- [ ] **KDP Profit Machine** (logged in)
 - [ ] **Amazon KDP** — [kdp.amazon.com](https://kdp.amazon.com) (account verified)
 - [ ] Bonus #2 niches list
 - [ ] Bonus #4 keyword swipe file
@@ -74,7 +74,7 @@ Also confirm:
 
 ### Choose ONE starter track
 
-| Track | Book type in KDP Mafia | Best if you want… |
+| Track | Book type in KDP Profit Machine | Best if you want… |
 |-------|------------------------|-------------------|
 | A — Fastest | Word Search | Quickest first publish |
 | B — Evergreen adult | Sudoku | Steady adult buyers |
@@ -142,11 +142,11 @@ Best for day one: Cute Cats Word Search for Adults (Large Print)
 
 ---
 
-## Hour 1–3 — Generate inside KDP Mafia
+## Hour 1–3 — Generate inside KDP Profit Machine
 
 ### Step-by-step
 
-1. Open KDP Mafia dashboard  
+1. Open KDP Profit Machine dashboard  
 2. Select your book type  
 3. Enter the theme/niche **exactly as you’ll sell it**  
 4. Use beginner-safe settings:
@@ -210,7 +210,7 @@ Examples:
 
 ## Download / Launch Kit package
 
-From KDP Mafia, download:
+From KDP Profit Machine, download:
 
 - [ ] Interior PDF  
 - [ ] Cover PDF / wraparound  
@@ -220,7 +220,7 @@ From KDP Mafia, download:
 Create a folder:
 
 ```
-KDP-Mafia / Book01-Cute-Cats-Word-Search /
+KDP-Profit-Machine / Book01-Cute-Cats-Word-Search /
   interior.pdf
   cover.pdf
   notes.txt
@@ -315,7 +315,7 @@ Swap theme + book type. Keep the structure.
 
 ### Must-have
 
-- [ ] Book generated in KDP Mafia  
+- [ ] Book generated in KDP Profit Machine  
 - [ ] Interior PDF saved  
 - [ ] Cover PDF saved  
 - [ ] Uploaded to KDP  
@@ -339,7 +339,7 @@ Do the **minimum viable publish**:
 
 1. Niche: Cute Cats  
 2. Type: Word Search  
-3. Generate defaults in KDP Mafia  
+3. Generate defaults in KDP Profit Machine  
 4. Accept first decent cover  
 5. Upload  
 6. Paste Bonus #4 Pack A keywords  
@@ -369,7 +369,7 @@ Polish tomorrow.
 ### Morning path
 
 - **09:00** Pick niche + track  
-- **09:20** Generate in KDP Mafia  
+- **09:20** Generate in KDP Profit Machine  
 - **10:30** Preview + cover  
 - **11:30** Download package  
 - **12:00** Lunch break  
@@ -414,7 +414,7 @@ Later you can build a brand like “Cozy Puzzle Press” — not required today.
 
 ## Commercial rights reminder
 
-With **KDP Mafia** commercial access, you can publish and keep royalties per your license terms.  
+With **KDP Profit Machine** commercial access, you can publish and keep royalties per your license terms.  
 Still never use:
 
 - Disney / Marvel / Pokemon / celebrity names  
@@ -470,7 +470,7 @@ Score yourself at the end of the day (1 point each):
 
 ## Final reminder
 
-KDP Mafia builds the files.  
+KDP Profit Machine builds the files.  
 This playbook removes the excuses.  
 
 Pick the niche. Generate. Upload. Publish.
@@ -482,7 +482,7 @@ Pick the niche. Generate. Upload. Publish.
 Use this literally:
 
 1. Open Bonus #2 → pick “Cute cats”  
-2. Open KDP Mafia → Word Search  
+2. Open KDP Profit Machine → Word Search  
 3. Theme: `cute cats for adults large print`  
 4. Generate with defaults (40–60 puzzles if available)  
 5. Generate cover with big title: `CUTE CATS WORD SEARCH`  
@@ -511,9 +511,9 @@ Publish a simple puzzle book today.
 Learn from the live listing tomorrow.  
 Build the catalog this month.
 
-KDP Mafia is the machine.  
+KDP Profit Machine is the machine.  
 This playbook is the ignition.
 
 ---
 
-*— KDP Mafia Bonus Pack · Bonus #1*
+*— KDP Profit Machine Bonus Pack · Bonus #1*

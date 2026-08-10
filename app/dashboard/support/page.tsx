@@ -22,7 +22,7 @@ export default async function SupportPage() {
       <div className="flex items-start justify-between">
         <div>
           <h1 className="text-2xl font-bold">Support</h1>
-          <p className="mt-1 text-sm text-neutral-600">Get help from the KDP Mafia team. We typically reply within a day.</p>
+          <p className="mt-1 text-sm text-neutral-600">Get help from the KDP Profit Machine team. We typically reply within a day.</p>
         </div>
       </div>
 

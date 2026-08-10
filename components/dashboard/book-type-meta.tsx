@@ -12,7 +12,7 @@ import type { BookType } from "@/lib/opportunity";
 
 // Category accent colors (subtle tints in the UI).
 const PUZZLE = "#3B82F6"; // blue
-const KIDS = "#C9A84C"; // brand gold
+const KIDS = "#F59E0B"; // amber (category tint)
 const TEXT = "#10B981"; // green
 
 export interface BookTypeMeta {

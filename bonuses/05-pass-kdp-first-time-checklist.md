@@ -1,10 +1,10 @@
 # BONUS #5 — Pass KDP First Time  
 ## Upload Checklist + Rejection Fix Guide
 
-**Product:** KDP Mafia  
+**Product:** KDP Profit Machine  
 **Perceived value:** $47  
 **Goal:** Upload once, pass Print Previewer, avoid the rejection loop  
-**Use after:** You generate files in KDP Mafia (Bonus #1)
+**Use after:** You generate files in KDP Profit Machine (Bonus #1)
 
 ---
 
@@ -19,7 +19,7 @@ Most failures come from mismatches:
 - Low-quality / misleading listing  
 - Incomplete or wrong file uploaded  
 
-KDP Mafia builds Amazon-friendly files — this guide is your **human final pass**.
+KDP Profit Machine builds Amazon-friendly files — this guide is your **human final pass**.
 
 ---
 
@@ -36,7 +36,7 @@ Print Part 1 + Part 4 and keep them beside your desk.
 
 ## Part 1 — Pre-upload checklist
 
-### A) Files from KDP Mafia
+### A) Files from KDP Profit Machine
 
 - [ ] Interior PDF downloaded (final version)  
 - [ ] Cover PDF / wraparound downloaded  
@@ -47,7 +47,7 @@ Print Part 1 + Part 4 and keep them beside your desk.
 
 **Folder example:**
 ```
-KDP-Mafia / Cats-Word-Search-v1 /
+KDP-Profit-Machine / Cats-Word-Search-v1 /
   interior.pdf
   cover.pdf
   notes.txt
@@ -55,7 +55,7 @@ KDP-Mafia / Cats-Word-Search-v1 /
 
 ### B) Specs that must match everywhere
 
-| Setting | KDP Mafia | Interior file | Cover file | KDP form |
+| Setting | KDP Profit Machine | Interior file | Cover file | KDP form |
 |---------|-----------|---------------|------------|----------|
 | Trim size | ☐ | ☐ | ☐ | ☐ |
 | Page count | ☐ | ☐ | ☐ | ☐ |
@@ -147,7 +147,7 @@ KDP paperbacks generally need at least **24 pages**. Don’t cut it close on day
 
 **Fix:**
 1. Check notes for intended trim  
-2. Confirm KDP Mafia export trim  
+2. Confirm KDP Profit Machine export trim  
 3. Re-generate/re-export at correct trim if needed  
 4. Re-upload interior  
 5. Make sure KDP form trim matches  
@@ -162,7 +162,7 @@ KDP paperbacks generally need at least **24 pages**. Don’t cut it close on day
 
 **Fix:**
 1. Identify if the book should have bleed (full-bleed coloring) or not  
-2. Regenerate with standard/safe settings in KDP Mafia  
+2. Regenerate with standard/safe settings in KDP Profit Machine  
 3. Don’t randomly “scale to fit” in unknown PDF tools  
 4. Re-preview  
 
@@ -176,7 +176,7 @@ KDP paperbacks generally need at least **24 pages**. Don’t cut it close on day
 
 **Fix:**
 1. Note final interior page count after generation  
-2. Regenerate cover in KDP Mafia using that exact count + trim  
+2. Regenerate cover in KDP Profit Machine using that exact count + trim  
 3. Replace cover file  
 4. Preview wraparound carefully  
 
@@ -189,7 +189,7 @@ KDP paperbacks generally need at least **24 pages**. Don’t cut it close on day
 **What it means:** Soft, pixelated, or stretched images.  
 
 **Fix:**
-1. Regenerate cover/pages in KDP Mafia  
+1. Regenerate cover/pages in KDP Profit Machine  
 2. Avoid enlarging tiny images in editors  
 3. Use tool-native exports  
 4. Re-upload  
@@ -203,7 +203,7 @@ KDP paperbacks generally need at least **24 pages**. Don’t cut it close on day
 **What it means:** Incomplete generation or bad download.  
 
 **Fix:**
-1. Re-open preview in KDP Mafia  
+1. Re-open preview in KDP Profit Machine  
 2. Confirm generation finished  
 3. Download fresh files  
 4. Re-upload  
@@ -268,7 +268,7 @@ KDP paperbacks generally need at least **24 pages**. Don’t cut it close on day
 **What it means:** File corrupt, too large, browser glitch, or incomplete download.  
 
 **Fix:**
-1. Re-download from KDP Mafia  
+1. Re-download from KDP Profit Machine  
 2. Try another browser  
 3. Disable flaky extensions  
 4. Re-upload one file at a time  
@@ -300,7 +300,7 @@ Do not publish until every box is checked:
 Change one thing at a time:
 
 1. Confirm trim + page count match everywhere  
-2. Re-download fresh files from KDP Mafia  
+2. Re-download fresh files from KDP Profit Machine  
 3. Re-upload interior only → preview  
 4. Re-upload cover only → preview  
 5. Regenerate cover with exact page count  
@@ -377,7 +377,7 @@ After 2–3 books, you’ll see your personal pattern and stop repeating it.
 | Size mismatch | Trim disagreement | Match trim everywhere |
 | Spine weird | Wrong page count on cover | Regen cover |
 | Edges cut off | Margin/bleed issue | Regen safe settings |
-| Blurry art | Bad image/export | Regen in KDP Mafia |
+| Blurry art | Bad image/export | Regen in KDP Profit Machine |
 | Upload fails | Corrupt/old file | Fresh download |
 | Listing blocked | Metadata/IP issue | Clean title/desc |
 
@@ -419,7 +419,7 @@ A: KDP can provide a free ISBN for paperbacks. Follow current KDP options in the
 A: You can often prepare drafts/files; full publishing may require account setup complete.
 
 **Q: Should I use KDP Cover Creator instead?**  
-A: Prefer your KDP Mafia cover so trim/spine stay matched to your workflow.
+A: Prefer your KDP Profit Machine cover so trim/spine stay matched to your workflow.
 
 **Q: Hardcover on day one?**  
 A: Not necessary. Paperback first.
@@ -458,7 +458,7 @@ Score before you hit Publish (1 point each):
 **Pass KDP first time =**  
 Match trim + Match page count + Preview everything + Honest listing
 
-KDP Mafia builds the engine.  
+KDP Profit Machine builds the engine.  
 You run this checklist.  
 Together you avoid the rejection loop.
 
@@ -524,4 +524,4 @@ Complete one worksheet per book. After 5 books, your upload speed doubles.
 
 ---
 
-*— KDP Mafia Bonus Pack · Bonus #5*
+*— KDP Profit Machine Bonus Pack · Bonus #5*

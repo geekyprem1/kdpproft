@@ -12,7 +12,7 @@ plus deployment / production / security checklists.
 | 2 | Free self-activation of paid plans | ✅ Gated behind `BILLING_TEST_ACTIVATION=1`; 403 in prod |
 | 5 | Non-atomic credit spend | ✅ Atomic SQL `spend_credits`/`add_credits` (migration `0014`), service-role only |
 | 8 | Security headers + rate limiting | ✅ Headers in `next.config.mjs`; per-user rate limits on all generation routes |
-| 9 | Branding inconsistency | ✅ Renamed to **KDF Mafia** + tagline across UI/metadata |
+| 9 | Branding inconsistency | ✅ Renamed to **KDP Profit Machine** + tagline across UI/metadata |
 | 3 | No real payment processor | ⏳ Deferred (per instruction — don't implement payments yet) |
 | 4 | Serverless vs. long jobs | ⏳ Deployment-time (use long-running host + worker) |
 | 6 | Rotate exposed secrets | ⏳ Ops action before launch |
@@ -71,8 +71,8 @@ plus deployment / production / security checklists.
    `X-Frame-Options`, `Referrer-Policy`, etc.; no rate limiting on AI/generation
    endpoints (abuse + cost risk even when authed).
 9. **Branding inconsistency.** Product reads "KDP Pocket AI" (nav/landing) while
-   Phase 11 brand is **KDF Mafia** with tagline *"The Fastest Way to Build a KDP
-   Business."* Plans say "KDF Mafia …". Pick one brand and apply consistently
+   Phase 11 brand is **KDP Profit Machine** with tagline *"The Fastest Way to Build a KDP
+   Business."* Plans say "KDP Profit Machine …". Pick one brand and apply consistently
    (logo, landing hero, `<title>`/metadata, emails).
 10. **Bundle double-charges research.** The Bundle flow calls `/api/opportunity`
     (1 credit) for recommendation, then `/api/bundle` (sum). Minor, but document
@@ -136,7 +136,7 @@ plus deployment / production / security checklists.
 1. Remove/gate the public word-search demo (#1).
 2. Env-flag the billing activation route (#2).
 3. Atomic credit spend via SQL/RPC (#5).
-4. Branding pass → KDF Mafia + tagline (#9).
+4. Branding pass → KDP Profit Machine + tagline (#9).
 5. Security headers + basic rate limiting (#8).
 6. Wire one real payment provider + webhook (#3).
 7. Deploy to long-running host + worker; rotate secrets (#4, #6).

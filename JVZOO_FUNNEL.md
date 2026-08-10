@@ -1,7 +1,7 @@
 # JVZoo Launch Funnel — 14 Offers, One-Time Only
 
 Design memo, not implementation. Mirrors the competitor's funnel shape (1 front end +
-13 OTOs) repriced under a $167 ceiling, rebuilt on KDP Mafia's existing features where
+13 OTOs) repriced under a $167 ceiling, rebuilt on KDP Profit Machine's existing features where
 possible. See [DECISIONS.md](DECISIONS.md) for the architecture these offers build on.
 
 ## The finding that drove this
@@ -31,7 +31,7 @@ Every row below sits at or under `price × 8` credits.
 
 | # | Offer | Price | Credits | 8× ceiling | Status |
 |---|---|---|---|---|---|
-| 1 | **KDP Mafia** (Front End) — Word Search, Sudoku, Maze, Launch Kit | $17 | 120 | 136 | ships today |
+| 1 | **KDP Profit Machine** (Front End) — Word Search, Sudoku, Maze, Launch Kit | $17 | 120 | 136 | ships today |
 | 2 | **OTO1 — Profit Multiplier** — unlimited-feel Niche/Opportunity reports + keyword export | $47 | 320 | 376 | repackage |
 | 3 | **OTO2 — Automation** — Bundle Generator + background batch queue | $67 | 480 | 536 | repackage |
 | 4 | **OTO3 — Agency Deluxe** — Coloring + Premium Cover + Ebook Creator, 5 project slots | $127 | 900 | 1,016 | repackage |

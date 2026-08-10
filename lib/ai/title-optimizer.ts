@@ -1,5 +1,5 @@
 /**
- * AI title optimizer via OpenRouter (Gemini → DeepSeek). Given a working title
+ * AI title lab via OpenRouter (Gemini → DeepSeek). Given a working title
  * and book context, returns 10+ conversion-optimized title variations. Each
  * variation gets sub-factor estimates (clarity, keyword, emotion, click appeal)
  * from the model; the overall SCORE (0–100) and band are computed here so the
@@ -100,7 +100,7 @@ export async function generateTitleVariations(
   input: TitleOptimizerInput
 ): Promise<TitleOptimizerResult> {
   if (!isAiConfigured()) {
-    throw new Error("Title Optimizer requires OpenRouter (set OPENROUTER_API_KEY).");
+    throw new Error("Title Lab requires OpenRouter (set OPENROUTER_API_KEY).");
   }
 
   const subtitle = input.subtitle?.trim() || "none provided";

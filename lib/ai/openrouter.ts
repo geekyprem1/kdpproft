@@ -22,7 +22,7 @@ export async function openRouterChat(opts: {
       "Content-Type": "application/json",
       // Optional attribution headers for OpenRouter dashboards.
       "HTTP-Referer": process.env.OPENROUTER_SITE_URL || "https://kdp-pocket-ai.app",
-      "X-Title": "KDP Mafia",
+      "X-Title": "KDP Profit Machine",
     },
     body: JSON.stringify({
       model: opts.model,

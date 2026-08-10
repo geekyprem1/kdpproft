@@ -560,7 +560,7 @@ function Shell({ step, children }: { step: number; children: React.ReactNode }) 
   const steps = ["Topic", "Opportunity", "Type", "Configure"];
   return (
     <div className="mx-auto max-w-xl">
-      <h1 className="text-2xl font-bold">Publishing Studio</h1>
+      <h1 className="text-2xl font-bold">Book Studio</h1>
       <ol className="mt-3 flex gap-2 text-xs">
         {steps.map((s, i) => (
           <li key={s} className={`flex-1 rounded px-2 py-1 text-center ${i + 1 === step ? "bg-neutral-900 text-white" : i + 1 < step ? "bg-neutral-200 text-neutral-700" : "bg-neutral-100 text-neutral-400"}`}>

@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
 
   if (!isAiConfigured()) {
     return NextResponse.json(
-      { error: "Title Optimizer needs OpenRouter — set OPENROUTER_API_KEY on the server." },
+      { error: "Title Lab needs OpenRouter — set OPENROUTER_API_KEY on the server." },
       { status: 503 }
     );
   }
@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
     genre: typeof body.genre === "string" ? body.genre.trim() : undefined,
   };
 
-  const cost = 1; // Title Optimizer
+  const cost = 1; // Title Lab
   try {
     await assertFeature(user.id, "title_optimizer");
     await reserve(user.id, cost, "title_optimizer");
@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     await refund(user.id, cost);
     await recordUsage(user.id, "title_optimizer", cost, "failed", undefined, { title });
-    console.error("title optimizer failed:", err);
+    console.error("title lab failed:", err);
     return NextResponse.json(
       { error: "Optimization failed. Please try again." },
       { status: 500 }

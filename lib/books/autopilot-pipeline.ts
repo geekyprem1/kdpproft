@@ -1,5 +1,5 @@
 /**
- * Book Autopilot pipeline: write 3 ebooks ONE AFTER ANOTHER (sequentially).
+ * Autopilot pipeline: write 3 ebooks ONE AFTER ANOTHER (sequentially).
  *
  * Sequential on purpose — three ebooks generating at once fire ~15 concurrent
  * OpenRouter calls (outline + chaptered writing per book), which trips the

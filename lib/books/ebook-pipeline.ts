@@ -42,7 +42,7 @@ export async function generateAndStoreEbook(
     try { await opts?.onProgress?.(step, pct); } catch { /* best-effort */ }
   };
 
-  // An explicit author (e.g. Book Autopilot) wins; otherwise inherit the
+  // An explicit author (e.g. Autopilot) wins; otherwise inherit the
   // Publishing Profile author, same as before.
   const author = input.author?.trim() || profileAuthor(await loadPublishingProfile(userId));
   const trimSize = input.trimSize?.trim() || "6x9";

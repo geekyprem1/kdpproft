@@ -82,12 +82,14 @@ export function isCloudflareAiConfigured(): boolean {
 export type CoverV2Unavailable = "disabled" | "not_configured";
 
 export function coverV2Unavailable(): CoverV2Unavailable | null {
-  if (env("COVER_V2_ENABLED") !== "1") return "disabled";
+  // Cover Studio (V2) is now the default engine. It's on unless an operator
+  // explicitly opts out with COVER_V2_ENABLED=0; it still requires Cloudflare.
+  if (env("COVER_V2_ENABLED") === "0") return "disabled";
   if (!isCloudflareAiConfigured()) return "not_configured";
   return null;
 }
 
-/** True only when the Beta flag is on AND Cloudflare is reachable. */
+/** True when Cover Studio (V2) is not disabled AND Cloudflare is reachable. */
 export function isCoverV2Enabled(): boolean {
   return coverV2Unavailable() === null;
 }

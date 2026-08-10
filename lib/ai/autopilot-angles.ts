@@ -1,5 +1,5 @@
 /**
- * Book Autopilot angle finder. Given one niche/topic, the model proposes 3
+ * Autopilot angle finder. Given one niche/topic, the model proposes 3
  * DISTINCT book angles (each a sellable book in its own right) so Autopilot can
  * spin one idea into three complete ebooks. Falls back to simple deterministic
  * angles if OpenRouter isn't configured.

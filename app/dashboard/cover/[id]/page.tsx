@@ -40,7 +40,7 @@ export default async function CoverDetailPage({ params }: { params: Promise<{ id
 
   return (
     <div className="mx-auto max-w-3xl">
-      <Link href="/dashboard/cover" className="text-sm text-neutral-500 hover:underline">← Cover Generator</Link>
+      <Link href="/dashboard/cover-v2" className="text-sm text-neutral-500 hover:underline">← Cover Studio</Link>
       <h1 className="mt-1 text-2xl font-bold">{cover.title}</h1>
       {cover.subtitle && <p className="text-sm text-neutral-600">{cover.subtitle}</p>}
       <div className="mt-6">

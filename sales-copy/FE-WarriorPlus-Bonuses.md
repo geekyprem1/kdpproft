@@ -1,6 +1,6 @@
-# KDP Mafia — Front-End Free Bonuses (WarriorPlus)
+# KDP Profit Machine — Front-End Free Bonuses (WarriorPlus)
 
-> Platform: WarriorPlus · Offer: KDP Mafia Commercial  
+> Platform: WarriorPlus · Offer: KDP Profit Machine Commercial  
 > Purpose: Fast-action bonus stack for the FE sales page + thank-you delivery  
 > Total perceived value: **~$195**  
 > **Full bonus content lives in:** [`/bonuses`](../bonuses/README.md)
@@ -29,13 +29,13 @@
 - **BONUS #4 — KDP Keyword + Category Swipe File** ($37)
 - **BONUS #5 — "Pass KDP First Time" Upload Checklist + Rejection Fix Guide** ($47)
 
-*All 5 bonuses delivered instantly with your KDP Mafia order.*
+*All 5 bonuses delivered instantly with your KDP Profit Machine order.*
 
 ---
 
 ## Delivery notes
 
 - Export each bonus `.md` → PDF (or Google Doc)
-- Zip → `KDP-Mafia-Bonus-Pack.zip`
+- Zip → `KDP-Profit-Machine-Bonus-Pack.zip`
 - Link on thank-you page + inside dashboard
 - Mention in day-0 / day-1 onboarding emails

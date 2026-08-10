@@ -58,7 +58,7 @@ export default async function AdminUserDetailPage({ params }: { params: Promise<
           <div className="text-[10px] font-semibold uppercase tracking-wide text-neutral-400">Entitlements</div>
           <div className="mt-2 flex flex-wrap gap-1.5">
             {ownedEntitlements.map((e) => (
-              <span key={e} className="rounded-full bg-[#C9A84C]/15 px-2.5 py-0.5 text-xs font-medium text-[#8a6d1f]">
+              <span key={e} className="rounded-full bg-[#2563EB]/15 px-2.5 py-0.5 text-xs font-medium text-[#8a6d1f]">
                 {e}
               </span>
             ))}

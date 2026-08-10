@@ -1,6 +1,6 @@
 # BONUS #3 — 12-Month Seasonal Publishing Calendar
 
-**Product:** KDP Mafia  
+**Product:** KDP Profit Machine  
 **Perceived value:** $27  
 **Core rule:** Publish seasonal books **6–8 weeks before** peak buying  
 **Goal:** Never scramble last-minute for Halloween/Christmas again
@@ -28,14 +28,14 @@ If you publish Dec 20 for Christmas, you missed the war.
 
 ---
 
-## The KDP Mafia seasonal system
+## The KDP Profit Machine seasonal system
 
 Every month, do this:
 
 | Week | Action |
 |------|--------|
 | Week 1 | Pick next season’s 1–2 niches |
-| Week 2 | Generate in KDP Mafia |
+| Week 2 | Generate in KDP Profit Machine |
 | Week 3 | Upload + keywords + categories |
 | Week 4 | Start the *following* season early |
 
@@ -475,7 +475,7 @@ Publish-by deadline: __________
 Niche: ________________________
 Book type: ____________________
 Title: ________________________
-Generated in KDP Mafia?: Y/N
+Generated in KDP Profit Machine?: Y/N
 Uploaded?: Y/N
 Keywords seasonal slots: ______
 Notes: ________________________
@@ -502,7 +502,7 @@ Make 4 copies for the next 4 seasons and fill them this week.
 
 **Day 1:** Circle next 2 seasons  
 **Day 2–3:** Choose 4 seasonal niches  
-**Day 4–10:** Generate 4 books in KDP Mafia  
+**Day 4–10:** Generate 4 books in KDP Profit Machine  
 **Day 11–18:** Upload all 4  
 **Day 19–25:** Improve titles/keywords with Bonus #4  
 **Day 26–30:** Plan the following season’s batch  
@@ -517,7 +517,7 @@ Publish-by date: __________________________
 Book 1: ___________________________________
 Book 2: ___________________________________
 Book 3: ___________________________________
-Generate this week in KDP Mafia: ___________
+Generate this week in KDP Profit Machine: ___________
 ```
 
 Seasonal money rewards early publishers.  
@@ -537,4 +537,4 @@ If you only remember five dates a year, remember those.
 
 ---
 
-*— KDP Mafia Bonus Pack · Bonus #3*
+*— KDP Profit Machine Bonus Pack · Bonus #3*

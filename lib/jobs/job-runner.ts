@@ -28,7 +28,7 @@ export async function runJob(jobId: string): Promise<void> {
   const topic = typeof input.theme === "string" ? input.theme : undefined;
   const meta = topic ? { topic } : {};
 
-  // Book Autopilot: one job writes 3 ebooks sequentially and manages its own
+  // Autopilot: one job writes 3 ebooks sequentially and manages its own
   // per-book credits/refunds, so it settles the job with 0 reserved cost.
   if (job.job_type === "autopilot") {
     try {

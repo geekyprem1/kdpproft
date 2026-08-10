@@ -10,7 +10,7 @@ import { WorkflowBanner } from "@/components/dashboard/workflow-banner";
 
 export const dynamic = "force-dynamic";
 
-const GOLD = "#C9A84C";
+const GOLD = "#2563EB";
 const GENERATORS: BookType[] = ["word_search", "sudoku", "maze", "crossword", "coloring", "activity", "lowcontent", "tracing", "math", "ebook", "story"];
 
 interface RecentBook {
@@ -80,15 +80,33 @@ export default async function DashboardHome() {
   return (
     <div className="mx-auto max-w-4xl space-y-6 pb-10">
 
-      {/* ── Title ── */}
-      <div>
-        <div className="flex items-center gap-2">
-          <span className="inline-block h-5 w-1 rounded-full" style={{ background: GOLD }} />
-          <h1 className="text-2xl font-bold text-neutral-900">KDP Mafia Command Center</h1>
+      {/* ── Hero banner ── */}
+      <div
+        className="relative overflow-hidden rounded-2xl p-6 shadow-lg sm:p-7"
+        style={{ backgroundImage: "linear-gradient(120deg, #0B1E3B 0%, #12336b 55%, #1D4ED8 100%)" }}
+      >
+        {/* decorative glow */}
+        <div className="pointer-events-none absolute -right-16 -top-20 h-56 w-56 rounded-full bg-blue-400/20 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 right-24 h-48 w-48 rounded-full bg-sky-300/10 blur-3xl" />
+        <div className="relative">
+          <span className="inline-block rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-blue-100">
+            Command Center
+          </span>
+          <h1 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-[26px]">
+            Welcome back to KDP Profit Machine
+          </h1>
+          <p className="mt-1.5 max-w-xl text-sm leading-relaxed text-blue-100/70">
+            Research niches, create books, package them, and launch faster on Amazon KDP — all from one dashboard.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2.5">
+            <Link href="/dashboard/create" className="inline-flex items-center gap-1.5 rounded-lg bg-white px-4 py-2 text-xs font-bold text-[#0B1E3B] transition-colors hover:bg-blue-50">
+              <SquarePen className="h-3.5 w-3.5" /> Create a Book
+            </Link>
+            <Link href="/dashboard/niche" className="inline-flex items-center gap-1.5 rounded-lg border border-white/25 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-white/10">
+              <TrendingUp className="h-3.5 w-3.5" /> Research Niches
+            </Link>
+          </div>
         </div>
-        <p className="mt-1 text-sm text-neutral-500">
-          Research niches, create books, package them, and launch faster on Amazon KDP.
-        </p>
       </div>
 
       {/* ── Stat cards ── */}
@@ -96,11 +114,19 @@ export default async function DashboardHome() {
         {stats.map((s) => {
           const Icon = s.icon;
           return (
-            <div key={s.label} className="rounded-xl border border-neutral-200 bg-white p-4 shadow-sm">
+            <div
+              key={s.label}
+              className="group relative overflow-hidden rounded-xl border border-neutral-200 bg-white p-4 shadow-sm transition-all hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md"
+            >
+              <span className="absolute inset-x-0 top-0 h-0.5" style={{ background: s.accent ? "linear-gradient(90deg,#3B82F6,#1D4ED8)" : "transparent" }} />
               <div className="flex items-center gap-2">
                 <span
                   className="flex h-8 w-8 items-center justify-center rounded-lg"
-                  style={{ background: s.accent ? `${GOLD}1a` : "#f4f4f5", color: s.accent ? GOLD : "#71717a" }}
+                  style={
+                    s.accent
+                      ? { background: "linear-gradient(135deg,#3B82F6,#1D4ED8)", color: "#fff" }
+                      : { background: "#EFF4FF", color: "#2563EB" }
+                  }
                 >
                   <Icon className="h-4 w-4" />
                 </span>
@@ -171,7 +197,7 @@ export default async function DashboardHome() {
               {
                 n: 1,
                 label: "Research a profitable niche",
-                sub: "Use Market Intelligence™ to find demand before you build",
+                sub: "Use Profit Radar™ to find demand before you build",
                 href: "/dashboard/niche",
                 done: false,
               },
@@ -277,7 +303,7 @@ export default async function DashboardHome() {
         <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
           {[
             {
-              title: "Launch Publishing Studio",
+              title: "Launch Book Studio",
               desc: "Create KDP-ready books from your niche — 20+ book types, all in one place.",
               href: "/dashboard/create",
               cta: "Launch Studio",
@@ -285,7 +311,7 @@ export default async function DashboardHome() {
               primary: true,
             },
             {
-              title: "Open Market Intelligence™",
+              title: "Open Profit Radar™",
               desc: "Discover profitable niches before you build — scored for demand, competition & evergreen potential.",
               href: "/dashboard/niche",
               cta: "Research Niches",
@@ -295,7 +321,7 @@ export default async function DashboardHome() {
             {
               title: "Generate a Cover",
               desc: "Create commercial-ready cover concepts with genre-aware AI scoring and KDP-ready exports.",
-              href: "/dashboard/cover",
+              href: "/dashboard/cover-v2",
               cta: "Open Cover Studio",
               icon: ImageIcon,
               primary: false,
@@ -322,7 +348,7 @@ export default async function DashboardHome() {
                 <Link
                   href={a.href}
                   className={`mt-3 inline-flex items-center gap-1 rounded-lg px-4 py-1.5 text-xs font-medium transition-colors ${
-                    a.primary ? "bg-neutral-900 text-white hover:bg-neutral-700" : "border border-neutral-300 text-neutral-700 hover:bg-neutral-50"
+                    a.primary ? "bg-[#2563EB] text-white hover:bg-[#1D4ED8]" : "border border-neutral-300 text-neutral-700 hover:bg-neutral-50"
                   }`}
                 >
                   {a.cta} <ArrowRight className="h-3.5 w-3.5" />
@@ -345,7 +371,7 @@ export default async function DashboardHome() {
           <p className="mt-3 text-sm text-neutral-500">
             No books yet.{" "}
             <Link href="/dashboard/create" className="underline">
-              Launch Publishing Studio
+              Launch Book Studio
             </Link>
             .
           </p>
@@ -379,11 +405,11 @@ export default async function DashboardHome() {
         )}
       </div>
 
-      {/* ── Book types in Publishing Studio ── */}
+      {/* ── Book types in Book Studio ── */}
       <div className="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm">
         <div className="flex items-center gap-2">
           <Sparkles className="h-4 w-4" style={{ color: GOLD }} />
-          <h2 className="text-sm font-semibold text-neutral-700">Publishing Studio — 20+ Book Types</h2>
+          <h2 className="text-sm font-semibold text-neutral-700">Book Studio — 20+ Book Types</h2>
         </div>
         <div className="mt-3 flex flex-wrap gap-2">
           {GENERATORS.map((g) => (
@@ -395,7 +421,7 @@ export default async function DashboardHome() {
               {BOOK_TYPE_LABELS[g]}
             </Link>
           ))}
-          <span className="rounded-full px-3 py-1 text-xs font-medium" style={{ background: `${GOLD}14`, color: "#8a7327" }}>
+          <span className="rounded-full px-3 py-1 text-xs font-medium" style={{ background: `${GOLD}14`, color: "#1D4ED8" }}>
             + more
           </span>
         </div>

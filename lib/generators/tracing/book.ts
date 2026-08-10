@@ -60,7 +60,7 @@ export function resolveTracingConfig(opts: TracingOptions): ResolvedTracingConfi
     pageCount,
     title: opts.title?.trim() || `Trace the ${SET_LABEL[opts.set]}`,
     subtitle: opts.subtitle?.trim() || "Handwriting Practice Workbook for Kids",
-    author: opts.author?.trim() || "KDP Mafia",
+    author: opts.author?.trim() || "KDP Profit Machine",
     items,
   };
 }

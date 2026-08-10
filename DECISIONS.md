@@ -73,7 +73,7 @@ partial-success tolerant. Bundles tracked in `bundles` + `books.bundle_id`
 bundles share one tested path. Recommended composition + publishing order are
 data-driven from per-type fit. Ebook stays separate (its own pipeline).
 
-## ADR-024 — KDF Mafia monetization: provider-agnostic billing
+## ADR-024 — KDP Profit Machine monetization: provider-agnostic billing
 **Context:** Launch-ready SaaS needs credits, plans, subscriptions, usage, and
 refunds — without coupling to any payment processor.
 **Decision:** `lib/billing/` with a strict provider boundary

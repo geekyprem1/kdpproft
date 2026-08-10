@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import { Logo } from "@/components/brand/logo";
 
 export default function LoginPage() {
   const [mode, setMode] = useState<"signin" | "signup">("signin");
@@ -60,15 +61,14 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-screen">
 
-      {/* ── Left panel — black ── */}
-      <div className="hidden lg:flex lg:w-1/2 flex-col justify-between bg-black p-12">
+      {/* ── Left panel — navy ── */}
+      <div className="hidden lg:flex lg:w-1/2 flex-col justify-between bg-gradient-to-b from-[#0B1E3B] to-[#071324] p-12">
         <div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="KDP Mafia" className="h-20 w-auto" />
+          <Logo variant="dark" className="h-12 text-lg" />
         </div>
 
         <div>
-          <div className="inline-block rounded-full border border-[#C9A84C]/40 bg-[#C9A84C]/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-[#C9A84C]">
+          <div className="inline-block rounded-full border border-[#2563EB]/40 bg-[#2563EB]/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-[#2563EB]">
             The Publishing OS
           </div>
 
@@ -84,13 +84,13 @@ export default function LoginPage() {
 
           <div className="mt-8 space-y-3">
             {[
-              { icon: "◆", label: "Market Intelligence™", desc: "Discover profitable niches before you build" },
-              { icon: "◆", label: "Publishing Studio", desc: "Word Search, Sudoku, Maze, Coloring & Ebooks" },
+              { icon: "◆", label: "Profit Radar™", desc: "Discover profitable niches before you build" },
+              { icon: "◆", label: "Book Studio", desc: "Word Search, Sudoku, Maze, Coloring & Ebooks" },
               { icon: "◆", label: "Cover Studio", desc: "AI-generated, genre-aware, KDP-ready covers" },
               { icon: "◆", label: "Launch Kit™", desc: "Metadata, keywords & checklist in one ZIP" },
             ].map((f) => (
               <div key={f.label} className="flex items-start gap-3">
-                <span className="mt-0.5 text-[10px] text-[#C9A84C]">{f.icon}</span>
+                <span className="mt-0.5 text-[10px] text-[#2563EB]">{f.icon}</span>
                 <div>
                   <div className="text-sm font-semibold text-white">{f.label}</div>
                   <div className="text-xs text-white/40">{f.desc}</div>
@@ -101,16 +101,15 @@ export default function LoginPage() {
         </div>
 
         <p className="text-xs text-white/20">
-          KDP Mafia is an independent publishing software platform and is not affiliated with Amazon.
+          KDP Profit Machine is an independent publishing software platform and is not affiliated with Amazon.
         </p>
       </div>
 
-      {/* ── Right panel — cream ── */}
-      <div className="flex flex-1 flex-col items-center justify-center bg-[#FBF7EE] px-8 py-12">
+      {/* ── Right panel — soft blue ── */}
+      <div className="flex flex-1 flex-col items-center justify-center bg-[#F4F7FE] px-8 py-12">
         {/* Mobile logo */}
         <div className="mb-8 lg:hidden">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="KDP Mafia" className="h-16 w-auto" />
+          <Logo variant="light" className="h-10 text-base" />
         </div>
 
         <div className="w-full max-w-sm">

@@ -122,7 +122,7 @@ export function CreateUserForm({
         )}
 
         <div className="flex items-end">
-          <button disabled={busy} className="rounded-lg bg-[#C9A84C] px-4 py-2 text-sm font-medium text-black hover:opacity-90 disabled:opacity-50">
+          <button disabled={busy} className="rounded-lg bg-[#2563EB] px-4 py-2 text-sm font-medium text-white hover:opacity-90 disabled:opacity-50">
             {busy ? "Creating…" : "Create User"}
           </button>
         </div>

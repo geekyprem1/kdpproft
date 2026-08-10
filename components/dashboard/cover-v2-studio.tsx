@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-const GOLD = "#C9A84C";
+const GOLD = "#2563EB";
 
 function OpenIcon() {
   return (
@@ -66,7 +66,7 @@ const GENRES = [
   { value: "coloring", label: "Coloring Book" },
   { value: "fiction", label: "Fiction" },
 ];
-const TRIMS = ["6x9", "8x10", "8.5x11"];
+const TRIMS = ["5x8", "5.25x8", "5.5x8.5", "6x9", "7x10", "8.5x11"];
 
 const field =
   "mt-1 w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm focus:border-neutral-900 focus:outline-none";
@@ -124,6 +124,8 @@ export function CoverV2Studio({
   const [style, setStyle] = useState(styles[0]?.key ?? "clean_modern");
   const [model, setModel] = useState(defaultModel);
   const [hybridOnly, setHybridOnly] = useState(false);
+  // When on, generation also hands back a print-ready wraparound PDF (back+spine+front).
+  const [alsoPrint, setAlsoPrint] = useState(false);
 
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -131,6 +133,12 @@ export function CoverV2Studio({
   const [active, setActive] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [deleting, setDeleting] = useState<string | null>(null);
+
+  // Print wraparound export: KDP needs the spine width, which depends on the
+  // interior page count + paper stock the buyer will actually upload.
+  const [wrapPages, setWrapPages] = useState("120");
+  const [wrapPaper, setWrapPaper] = useState("white");
+  const [wrapBg, setWrapBg] = useState("#1a1a1a");
 
   const current = preview?.variations[active] ?? preview?.variations[0] ?? null;
 
@@ -206,6 +214,22 @@ export function CoverV2Studio({
         variations: json.variations,
       });
       setActive(0);
+
+      // If the buyer opted in, hand back the print wraparound right away for the
+      // best (first) concept, using the trim/pages/paper/color chosen in the form.
+      if (alsoPrint) {
+        const idx = json.variations?.[0]?.index ?? 0;
+        const url =
+          `/api/cover/${json.id}/wrap-pdf?v=${idx}&pages=${encodeURIComponent(wrapPages)}` +
+          `&paper=${wrapPaper}&bg=${encodeURIComponent(wrapBg.replace("#", ""))}`;
+        const a = document.createElement("a");
+        a.href = url;
+        a.rel = "noopener";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      }
+
       // Refresh so the new cover appears in the list and the balance updates.
       router.refresh();
     } catch {
@@ -262,23 +286,13 @@ export function CoverV2Studio({
               <input className={field} value={author} onChange={(e) => setAuthor(e.target.value)} placeholder="Jane Doe" />
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div>
-              <label className={label}>Genre</label>
-              <select className={field} value={genre} onChange={(e) => setGenre(e.target.value)}>
-                {GENRES.map((g) => (
-                  <option key={g.value} value={g.value}>{g.label}</option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label className={label}>Trim size</label>
-              <select className={field} value={trim} onChange={(e) => setTrim(e.target.value)}>
-                {TRIMS.map((t) => (
-                  <option key={t} value={t}>{t}</option>
-                ))}
-              </select>
-            </div>
+          <div>
+            <label className={label}>Genre</label>
+            <select className={field} value={genre} onChange={(e) => setGenre(e.target.value)}>
+              {GENRES.map((g) => (
+                <option key={g.value} value={g.value}>{g.label}</option>
+              ))}
+            </select>
           </div>
         </div>
 
@@ -321,15 +335,89 @@ export function CoverV2Studio({
           </span>
         </label>
 
+        {/* ── Print-ready wraparound (KDP paperback) ── */}
+        <div className="mt-4 rounded-lg border border-neutral-200 p-3">
+          <label className="flex items-start gap-2 text-[13px] font-medium text-neutral-800">
+            <input
+              type="checkbox"
+              checked={alsoPrint}
+              onChange={(e) => setAlsoPrint(e.target.checked)}
+              className="mt-0.5"
+            />
+            <span>
+              Also create print-ready PDF (back + spine + front)
+              <span className="block text-[11px] font-normal text-neutral-400">
+                Leave unticked for an ebook / front-cover only. Tick it to also get a single
+                KDP-ready wraparound for paperbacks.
+              </span>
+            </span>
+          </label>
+
+          <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div>
+              <label className={label}>Trim size</label>
+              <select className={field} value={trim} onChange={(e) => setTrim(e.target.value)}>
+                {TRIMS.map((t) => (
+                  <option key={t} value={t}>{t} in</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label className={label}>Page count</label>
+              <p className="text-[11px] text-neutral-400">Used to compute spine width.</p>
+              <input
+                type="number"
+                min={24}
+                max={828}
+                value={wrapPages}
+                onChange={(e) => setWrapPages(e.target.value)}
+                disabled={!alsoPrint}
+                className={`${field} disabled:cursor-not-allowed disabled:bg-neutral-100 disabled:text-neutral-400`}
+              />
+            </div>
+          </div>
+
+          {alsoPrint && (
+            <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <div>
+                <label className={label}>Paper</label>
+                <select className={field} value={wrapPaper} onChange={(e) => setWrapPaper(e.target.value)}>
+                  <option value="white">White</option>
+                  <option value="cream">Cream</option>
+                  <option value="color-standard">Color · Standard</option>
+                  <option value="color-premium">Color · Premium</option>
+                </select>
+              </div>
+              <div>
+                <label className={label}>Back / spine color</label>
+                <span className="mt-1 flex items-center gap-2">
+                  <input
+                    type="color"
+                    value={wrapBg}
+                    onChange={(e) => setWrapBg(e.target.value)}
+                    className="h-9 w-11 cursor-pointer rounded border border-neutral-300 bg-white p-0.5"
+                    aria-label="Back and spine background color"
+                  />
+                  <span className="text-[12px] text-neutral-400">{wrapBg}</span>
+                </span>
+              </div>
+            </div>
+          )}
+        </div>
+
         {error && <p className="mt-4 text-sm text-red-600">{error}</p>}
 
         <button
           onClick={generate}
           disabled={busy}
-          className="mt-5 w-full rounded-lg px-4 py-3 text-sm font-bold text-black transition-opacity disabled:opacity-50"
+          className="mt-5 w-full rounded-lg px-4 py-3 text-sm font-bold text-white transition-opacity disabled:opacity-50"
           style={{ backgroundColor: GOLD }}
         >
-          {busy ? "Generating… this can take a minute or two" : "Generate Cover"}
+          {busy
+            ? "Generating… this can take a minute or two"
+            : alsoPrint
+            ? "Generate Cover + Print PDF"
+            : "Generate Cover"}
         </button>
         <p className="mt-2 text-center text-[11px] text-neutral-400">
           Costs {credits} credits — you have {balance.toLocaleString()}
@@ -433,8 +521,67 @@ export function CoverV2Studio({
               href={`/api/cover/${preview.id}/download-pdf?v=${current.index}`}
               className="mt-2 flex items-center justify-center gap-1.5 rounded-lg border border-neutral-300 px-3 py-2 text-[13px] font-medium text-neutral-800 hover:bg-neutral-50"
             >
-              Generate print PDF
+              Front-cover PDF (ebook / front art)
             </a>
+
+            {/* ── Print wraparound (back + spine + front) for KDP paperbacks ── */}
+            <div className="mt-3 rounded-lg border border-neutral-200 bg-neutral-50 p-3">
+              <p className="text-[12px] font-semibold text-neutral-800">Print wraparound (paperback)</p>
+              <p className="mt-0.5 text-[11px] leading-relaxed text-neutral-500">
+                KDP print books need a single back + spine + front PDF. The spine is sized from
+                your interior page count &amp; paper.
+              </p>
+              <div className="mt-2 grid grid-cols-2 gap-2">
+                <div>
+                  <label className="block text-[11px] font-medium text-neutral-600">Interior pages</label>
+                  <input
+                    type="number"
+                    min={24}
+                    max={828}
+                    value={wrapPages}
+                    onChange={(e) => setWrapPages(e.target.value)}
+                    className="mt-1 w-full rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-[13px] focus:border-neutral-900 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-medium text-neutral-600">Paper</label>
+                  <select
+                    value={wrapPaper}
+                    onChange={(e) => setWrapPaper(e.target.value)}
+                    className="mt-1 w-full rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-[13px] focus:border-neutral-900 focus:outline-none"
+                  >
+                    <option value="white">White</option>
+                    <option value="cream">Cream</option>
+                    <option value="color-standard">Color · Standard</option>
+                    <option value="color-premium">Color · Premium</option>
+                  </select>
+                </div>
+              </div>
+              <div className="mt-2 flex items-center gap-2">
+                <label className="text-[11px] font-medium text-neutral-600">Back / spine color</label>
+                <input
+                  type="color"
+                  value={wrapBg}
+                  onChange={(e) => setWrapBg(e.target.value)}
+                  className="h-7 w-10 cursor-pointer rounded border border-neutral-300 bg-white p-0.5"
+                  aria-label="Back and spine background color"
+                />
+                <span className="text-[11px] text-neutral-400">{wrapBg}</span>
+              </div>
+              <a
+                href={`/api/cover/${preview.id}/wrap-pdf?v=${current.index}&pages=${encodeURIComponent(
+                  wrapPages,
+                )}&paper=${wrapPaper}&bg=${encodeURIComponent(wrapBg.replace("#", ""))}`}
+                className="mt-3 flex items-center justify-center gap-1.5 rounded-lg px-3 py-2 text-[13px] font-semibold text-white hover:opacity-90"
+                style={{ backgroundColor: GOLD }}
+              >
+                ⤓ Download print wraparound PDF
+              </a>
+              <p className="mt-2 text-[10px] leading-snug text-neutral-400">
+                Always confirm the final file in KDP&apos;s Print Previewer before publishing.
+              </p>
+            </div>
+
             <Link
               href={`/dashboard/cover/${preview.id}`}
               className="mt-3 block text-center text-[11px] text-neutral-400 hover:underline"

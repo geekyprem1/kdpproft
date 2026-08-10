@@ -13,7 +13,7 @@ import { CoverV2Studio, type CoverListItem, type CoverPreview } from "@/componen
 
 export const dynamic = "force-dynamic";
 
-const GOLD = "#C9A84C";
+const GOLD = "#2563EB";
 const THUMB_TTL = 900;
 
 interface CoverRow {
@@ -128,14 +128,9 @@ export default async function CoverV2Page({
 
   return (
     <div className="mx-auto max-w-6xl">
-      <div className="flex items-center gap-3">
-        <h1 className="text-2xl font-bold text-neutral-900">Cover Studio V2</h1>
-        <span
-          className="rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide"
-          style={{ backgroundColor: `${GOLD}22`, color: "#8a6d1f", border: `1px solid ${GOLD}66` }}
-        >
-          Beta
-        </span>
+      <div className="flex items-center gap-2">
+        <span className="inline-block h-5 w-1 rounded-full" style={{ background: GOLD }} />
+        <h1 className="text-2xl font-bold text-neutral-900">Cover Studio</h1>
       </div>
       <p className="mt-1 text-sm text-neutral-600">
         AI designs the whole cover — artwork, layout and typography together.
@@ -146,12 +141,12 @@ export default async function CoverV2Page({
         <div className="mt-6 rounded-xl border border-neutral-200 bg-white p-5 shadow-sm">
           <h2 className="text-sm font-semibold text-neutral-800">Not unlocked on your account</h2>
           <p className="mt-1 text-sm text-neutral-600">
-            Cover Studio V2 needs the {requiredPlanFor("cover_v2").name} plan or an add-on that
+            Cover Studio needs the {requiredPlanFor("cover_v2").name} plan or an add-on that
             includes it.
           </p>
           <Link
             href="/dashboard/upgrade"
-            className="mt-4 inline-block rounded-lg px-4 py-2 text-sm font-bold text-black"
+            className="mt-4 inline-block rounded-lg px-4 py-2 text-sm font-bold text-white"
             style={{ backgroundColor: GOLD }}
           >
             View add-ons
@@ -169,11 +164,6 @@ export default async function CoverV2Page({
           />
         </div>
       )}
-
-      <p className="mt-6 text-xs text-neutral-400">
-        The stable <Link href="/dashboard/cover" className="underline">Cover Studio</Link> is
-        unchanged and remains the default.
-      </p>
     </div>
   );
 }

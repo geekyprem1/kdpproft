@@ -4,7 +4,7 @@ import { UPSELL_OFFERS, type Offer } from "@/lib/offers";
 
 export const dynamic = "force-dynamic";
 
-const GOLD = "#C9A84C";
+const GOLD = "#2563EB";
 
 function OfferCard({ offer }: { offer: Offer }) {
   const variants = offer.variants ?? [
@@ -56,11 +56,11 @@ function OfferCard({ offer }: { offer: Offer }) {
                 href={v.checkoutUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block rounded-lg px-4 py-3 text-center text-sm font-bold text-black transition-colors"
+                className="block rounded-lg px-4 py-3 text-center text-sm font-bold text-white transition-colors"
                 style={{ backgroundColor: GOLD }}
               >
                 {label}
-                <span className="mt-0.5 block text-[11px] font-normal text-black/60">{meta}</span>
+                <span className="mt-0.5 block text-[11px] font-normal text-white/70">{meta}</span>
               </a>
             ) : (
               <div

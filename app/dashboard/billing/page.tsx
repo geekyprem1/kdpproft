@@ -13,8 +13,8 @@ interface UsageRow {
 }
 
 const ACTION_LABELS: Record<string, string> = {
-  market_intelligence: "Market Intelligence™",
-  title_optimizer: "Title Optimizer",
+  market_intelligence: "Profit Radar™",
+  title_optimizer: "Title Lab",
   word_search: "Word Search",
   sudoku: "Sudoku",
   maze: "Maze",

@@ -80,7 +80,7 @@ export default async function AdminUsersPage({ searchParams }: { searchParams: P
                 <td className="px-4 py-2.5"><StatusBadge status={u.account_status} /></td>
                 <td className="px-4 py-2.5">
                   {u.role !== "user"
-                    ? <span className="rounded-full bg-[#C9A84C]/15 px-2 py-0.5 text-[10px] font-semibold text-[#9a7d2f]">{u.role}</span>
+                    ? <span className="rounded-full bg-[#2563EB]/15 px-2 py-0.5 text-[10px] font-semibold text-[#9a7d2f]">{u.role}</span>
                     : <span className="text-xs text-neutral-400">user</span>}
                 </td>
                 <td className="px-4 py-2.5 text-xs text-neutral-400">{new Date(u.created_at).toLocaleDateString()}</td>

@@ -1,9 +1,9 @@
 # BONUS #4 — KDP Keyword + Category Swipe File
 
-**Product:** KDP Mafia  
+**Product:** KDP Profit Machine  
 **Perceived value:** $37  
 **Purpose:** Turn a finished book into a listing people can actually find  
-**Use with:** KDP Mafia Launch Kit exports + Bonus #1 upload flow
+**Use with:** KDP Profit Machine Launch Kit exports + Bonus #1 upload flow
 
 ---
 
@@ -35,9 +35,9 @@ This file gives you swipeable systems for all five.
 
 ---
 
-## The KDP Mafia listing stack (order of operations)
+## The KDP Profit Machine listing stack (order of operations)
 
-1. Finalize book contents in KDP Mafia  
+1. Finalize book contents in KDP Profit Machine  
 2. Lock trim + page count  
 3. Write title with formula below  
 4. Add subtitle for audience/benefit  
@@ -371,7 +371,7 @@ Before publishing:
 19. Coffee Lovers Word Search — Funny Caffeine Puzzles  
 20. Retirement Word Search Puzzle Book — Funny Gift for Retirees  
 
-Copy → customize → generate matching book in KDP Mafia.
+Copy → customize → generate matching book in KDP Profit Machine.
 
 ---
 
@@ -497,4 +497,4 @@ Write like a human helping a shopper decide in 10 seconds.
 
 ---
 
-*— KDP Mafia Bonus Pack · Bonus #4*
+*— KDP Profit Machine Bonus Pack · Bonus #4*

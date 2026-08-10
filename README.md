@@ -1,4 +1,4 @@
-# KDP Mafia
+# KDP Profit Machine
 
 **The Fastest Way to Build a KDP Business.**
 
@@ -23,7 +23,7 @@ books, covers, and launch kits → publish.
 | KDP Publish Package | ✅ | `lib/publishing/` — per book: metadata.json, keywords, description, categories, alt titles, checklist → ZIP (interior + cover + 6 files) |
 | Author & Publishing Profile | ✅ | `/dashboard/settings` — author/pen/publisher/language/trim/price/AI-disclosure/copyright inherited by every book + publish package |
 | Background generation (Book In Progress) | ✅ | `lib/jobs/` — async jobs; continue if you leave/refresh/log out; progress, timeline, retry, recovery; atomic claim + optional `npm run worker` for restart resilience |
-| Monetization (KDP Mafia) | ✅ | `lib/billing/` — provider-agnostic credits/plans/subscriptions/usage/refunds; feature gating; reserve→consume/refund; Billing dashboard (`/dashboard/billing`) |
+| Monetization (KDP Profit Machine) | ✅ | `lib/billing/` — provider-agnostic credits/plans/subscriptions/usage/refunds; feature gating; reserve→consume/refund; Billing dashboard (`/dashboard/billing`) |
 | Auth | ✅ | Supabase (Google + email magic link), `proxy.ts` gating `/dashboard` |
 | Dashboard | ✅ | Overview, Niche Research, Create Book, My Books, Download History |
 | Niche Research | ✅ | AI → 20 scored niches, opportunity score, recommendations, save, PDF export, one-click generate |

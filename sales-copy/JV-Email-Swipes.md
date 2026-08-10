@@ -1,6 +1,6 @@
-# KDP Mafia — JV / Affiliate Email Swipes (USA Audience)
+# KDP Profit Machine — JV / Affiliate Email Swipes (USA Audience)
 
-> Copy-paste ready email swipes for affiliates promoting **KDP Mafia** during launch.
+> Copy-paste ready email swipes for affiliates promoting **KDP Profit Machine** during launch.
 > Replace `[YOUR AFFILIATE LINK]` with your unique link and `[FIRST NAME]` with your merge tag.
 >
 > **Compliance note:** These swipes avoid income guarantees. KDP results depend on
@@ -72,7 +72,7 @@ One "simple" book turns into days of work.
 
 Tomorrow, that changes.
 
-A tool called **KDP Mafia** goes live — an all-in-one publishing workspace built to take you from idea to publish-ready book, fast.
+A tool called **KDP Profit Machine** goes live — an all-in-one publishing workspace built to take you from idea to publish-ready book, fast.
 
 I'll drop your link first thing in the morning.
 
@@ -86,7 +86,7 @@ Be ready,
 ## Email 3 — "It's LIVE" (Day 1, morning)
 
 **Subject line options:**
-- [LIVE] KDP Mafia is open
+- [LIVE] KDP Profit Machine is open
 - It's here: 20 publishing engines in one dashboard
 - The KDP shortcut I promised you is live
 
@@ -96,7 +96,7 @@ Hey [FIRST NAME],
 
 It's live.
 
-**KDP Mafia** just opened, and if you've ever wanted to build a catalog of books on Amazon KDP without drowning in tools and busywork, this is the one to grab.
+**KDP Profit Machine** just opened, and if you've ever wanted to build a catalog of books on Amazon KDP without drowning in tools and busywork, this is the one to grab.
 
 👉 [YOUR AFFILIATE LINK]
 
@@ -116,7 +116,7 @@ And right now it's at **launch pricing** — this goes up when the timer hits ze
 
 [YOUR NAME]
 
-P.S. This is the lowest price KDP Mafia will ever be. Grab it before the early-bird window closes.
+P.S. This is the lowest price KDP Profit Machine will ever be. Grab it before the early-bird window closes.
 
 ---
 
@@ -149,7 +149,7 @@ That's how you turn one idea into a whole shelf of products.
 
 The problem has always been *production speed*. Building each book by hand kills you before you ever get to book #5.
 
-**KDP Mafia** fixes that. You get the research, the book engines, the covers, the listing tools and the packaging — in one place, built for exactly this.
+**KDP Profit Machine** fixes that. You get the research, the book engines, the covers, the listing tools and the packaging — in one place, built for exactly this.
 
 👉 Grab it at launch pricing: [YOUR AFFILIATE LINK]
 
@@ -176,7 +176,7 @@ The #1 excuse I hear about KDP:
 
 "I'm not a designer. I'm not techy. I wouldn't know where to start."
 
-Good news — with **KDP Mafia** you don't have to be.
+Good news — with **KDP Profit Machine** you don't have to be.
 
 You pick a book type. You enter your topic. The platform helps you build the interior, generate a matching cover, and prepare your listing.
 
@@ -196,14 +196,14 @@ No blank pages. No design software. No ten-tab tool juggling.
 
 **Subject line options:**
 - All 20 engines (full list inside)
-- Everything you get with KDP Mafia
+- Everything you get with KDP Profit Machine
 - The full toolbox
 
 **Body:**
 
 Hey [FIRST NAME],
 
-A few people asked what's actually inside **KDP Mafia**. Here's the toolbox — 20 publishing engines in one dashboard:
+A few people asked what's actually inside **KDP Profit Machine**. Here's the toolbox — 20 publishing engines in one dashboard:
 
 **Research & Listing**
 - Market Intelligence (niche research)
@@ -242,7 +242,7 @@ One login. One workflow. Idea to publish-ready.
 ## Email 7 — "Is this for me?" (Day 4)
 
 **Subject line options:**
-- Is KDP Mafia right for you? (be honest)
+- Is KDP Profit Machine right for you? (be honest)
 - Who this is really for
 - Skip this if you love doing everything manually
 
@@ -250,7 +250,7 @@ One login. One workflow. Idea to publish-ready.
 
 Hey [FIRST NAME],
 
-Let me be straight — **KDP Mafia** isn't for everyone.
+Let me be straight — **KDP Profit Machine** isn't for everyone.
 
 **It's NOT for you if:**
 - You enjoy manually formatting every page
@@ -277,7 +277,7 @@ P.S. Reminder: no earnings are guaranteed. This is a production and workflow too
 ## Email 8 — "Price goes up tonight" (Last 24 hrs)
 
 **Subject line options:**
-- Price rises tonight (KDP Mafia)
+- Price rises tonight (KDP Profit Machine)
 - Last chance at launch pricing
 - The timer's almost up
 
@@ -287,7 +287,7 @@ Hey [FIRST NAME],
 
 Quick and important.
 
-The launch pricing on **KDP Mafia** ends tonight. After the timer hits zero, the price goes up.
+The launch pricing on **KDP Profit Machine** ends tonight. After the timer hits zero, the price goes up.
 
 If you've been on the fence, this is the moment.
 
@@ -305,14 +305,14 @@ Don't pay more tomorrow for the same thing you can grab today.
 
 **Subject line options:**
 - Closing in hours ⏳
-- Final call — KDP Mafia
+- Final call — KDP Profit Machine
 - This is the last email
 
 **Body:**
 
 Hey [FIRST NAME],
 
-This is my last email about **KDP Mafia**.
+This is my last email about **KDP Profit Machine**.
 
 In a few hours the launch window closes and the price goes up.
 
@@ -349,8 +349,8 @@ P.S. Once the timer's done, it's done. Grab it now: [YOUR AFFILIATE LINK]
 
 # BONUS — Short "P.S. / Solo Ad" Blurb (100 words)
 
-Ever wanted to sell books on Amazon KDP but got stuck on the actual work — niches, interiors, covers, listings? **KDP Mafia** puts it all in one dashboard: niche research, 20 book engines (puzzle books, coloring books, planners, ebooks and more), AI covers, title optimization, and publish-ready packaging. Instead of spending days on one book, build multiple concepts fast and grow a real catalog. No income is guaranteed — results depend on your niche, quality, and effort — but if slow production has been your bottleneck, this removes it. 👉 [YOUR AFFILIATE LINK]
+Ever wanted to sell books on Amazon KDP but got stuck on the actual work — niches, interiors, covers, listings? **KDP Profit Machine** puts it all in one dashboard: niche research, 20 book engines (puzzle books, coloring books, planners, ebooks and more), AI covers, title optimization, and publish-ready packaging. Instead of spending days on one book, build multiple concepts fast and grow a real catalog. No income is guaranteed — results depend on your niche, quality, and effort — but if slow production has been your bottleneck, this removes it. 👉 [YOUR AFFILIATE LINK]
 
 ---
 
-*Swipes prepared for the KDP Mafia launch. Keep all promotions compliant: no guaranteed-income claims, no fake scarcity, and honor the actual cart-close time.*
+*Swipes prepared for the KDP Profit Machine launch. Keep all promotions compliant: no guaranteed-income claims, no fake scarcity, and honor the actual cart-close time.*

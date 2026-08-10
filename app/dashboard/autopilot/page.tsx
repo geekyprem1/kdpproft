@@ -24,7 +24,7 @@ export default async function AutopilotPage() {
 
   return (
     <div className="mx-auto max-w-2xl">
-      <h1 className="text-2xl font-bold">Book Autopilot</h1>
+      <h1 className="text-2xl font-bold">Autopilot</h1>
       <p className="mt-1 text-sm text-neutral-600">
         Answer a few questions and we&apos;ll write 3 complete books — with covers — for you.
       </p>

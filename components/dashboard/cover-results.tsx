@@ -102,7 +102,7 @@ function ScorePanel({ breakdown }: { breakdown: ScoreBreakdown }) {
 function VisualQualityPanel({ vq }: { vq: VisualQuality }) {
   const c = overallColor(vq.overall);
   return (
-    <div className="mt-2 rounded-lg border border-[#C9A84C]/40 bg-[#FBF7EE] p-3 text-xs">
+    <div className="mt-2 rounded-lg border border-[#2563EB]/40 bg-[#FBF7EE] p-3 text-xs">
       <div className="mb-2 flex items-center justify-between">
         <span className="font-semibold text-neutral-700">Commercial Score</span>
         <span
@@ -145,6 +145,15 @@ export function CoverResults({
   const [regen, setRegen] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<number | null>(null);
+
+  // Print wraparound export settings — shared by every concept's "Wrap" button.
+  // KDP needs the spine width, which depends on the interior page count + paper.
+  const [wrapPages, setWrapPages] = useState("120");
+  const [wrapPaper, setWrapPaper] = useState("white");
+  const [wrapBg, setWrapBg] = useState("#1a1a1a");
+  const wrapHref = (index: number) =>
+    `/api/cover/${coverId}/wrap-pdf?v=${index}&pages=${encodeURIComponent(wrapPages)}` +
+    `&paper=${wrapPaper}&bg=${encodeURIComponent(wrapBg.replace("#", ""))}`;
 
   async function regenerate(index: number) {
     setError(null);
@@ -215,6 +224,57 @@ export function CoverResults({
           </select>
         </div>
       )}
+      {/* ── Print wraparound settings (KDP paperback: back + spine + front) ── */}
+      <div className="mb-5 rounded-lg border border-neutral-200 bg-neutral-50 p-3">
+        <div className="text-xs font-semibold text-neutral-700">Print wraparound settings</div>
+        <p className="mt-0.5 text-[11px] leading-relaxed text-neutral-500">
+          Used by each concept&apos;s <b>Wrap</b> export — a single back + spine + front PDF for KDP
+          paperbacks. The spine is sized from your interior page count &amp; paper.
+        </p>
+        <div className="mt-2 flex flex-wrap items-end gap-3">
+          <label className="text-[11px] font-medium text-neutral-600">
+            Interior pages
+            <input
+              type="number"
+              min={24}
+              max={828}
+              value={wrapPages}
+              onChange={(e) => setWrapPages(e.target.value)}
+              className="mt-1 block w-24 rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-[13px] focus:border-neutral-900 focus:outline-none"
+            />
+          </label>
+          <label className="text-[11px] font-medium text-neutral-600">
+            Paper
+            <select
+              value={wrapPaper}
+              onChange={(e) => setWrapPaper(e.target.value)}
+              className="mt-1 block rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-[13px] focus:border-neutral-900 focus:outline-none"
+            >
+              <option value="white">White</option>
+              <option value="cream">Cream</option>
+              <option value="color-standard">Color · Standard</option>
+              <option value="color-premium">Color · Premium</option>
+            </select>
+          </label>
+          <label className="text-[11px] font-medium text-neutral-600">
+            Back / spine color
+            <span className="mt-1 flex items-center gap-2">
+              <input
+                type="color"
+                value={wrapBg}
+                onChange={(e) => setWrapBg(e.target.value)}
+                className="h-8 w-10 cursor-pointer rounded border border-neutral-300 bg-white p-0.5"
+                aria-label="Back and spine background color"
+              />
+              <span className="text-[11px] text-neutral-400">{wrapBg}</span>
+            </span>
+          </label>
+        </div>
+        <p className="mt-2 text-[10px] text-neutral-400">
+          Always confirm the final file in KDP&apos;s Print Previewer before publishing.
+        </p>
+      </div>
+
       {error && <p className="mb-3 text-sm text-red-600">{error}</p>}
 
       <div className="grid grid-cols-3 gap-5">
@@ -288,10 +348,19 @@ export function CoverResults({
                   <a
                     href={`/api/cover/${coverId}/download-pdf?v=${v.index}`}
                     className="flex-1 rounded border border-neutral-900 px-2 py-1.5 text-center text-xs font-medium hover:bg-neutral-50"
+                    title="Front-cover PDF (ebook / front art)"
                   >
                     PDF
                   </a>
                 </div>
+                <a
+                  href={wrapHref(v.index)}
+                  className="rounded px-2 py-1.5 text-center text-xs font-semibold text-white hover:opacity-90"
+                  style={{ backgroundColor: "#2563EB" }}
+                  title="Print wraparound: back + spine + front for KDP paperbacks"
+                >
+                  ⤓ Wrap PDF (back + spine + front)
+                </a>
                 <button
                   onClick={() => regenerate(v.index)}
                   disabled={regen !== null}

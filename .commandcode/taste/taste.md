@@ -8,4 +8,4 @@
 
 ## Marketing Copy
 - Writes marketing/sales copy (e.g., VSL scripts) for US audiences; wants catchy hook lines and angles emphasizing how customers can make money with the product plus social proof that others are already earning. Confidence: 0.75
-- For this project, the product name is "KDP Mafia" — use "KDP Mafia" instead of "KDP Launchpad" in all future marketing copy. Confidence: 0.95
+- For this project, the product name is "KDP Profit Machine" — use "KDP Profit Machine" instead of "KDP Launchpad" in all future marketing copy. Confidence: 0.95

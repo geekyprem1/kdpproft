@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
   const topic = typeof body.topic === "string" ? body.topic.trim() : "";
   if (!topic) return NextResponse.json({ error: "Topic is required" }, { status: 400 });
 
-  const cost = 1; // Market Intelligence™
+  const cost = 1; // Profit Radar™
   try {
     await assertFeature(user.id, "market_intelligence");
     await reserve(user.id, cost, "niche");

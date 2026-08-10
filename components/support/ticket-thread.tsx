@@ -12,12 +12,12 @@ export function TicketThread({ replies }: { replies: TicketReply[] }) {
           <div
             key={r.id}
             className={`rounded-xl border p-4 shadow-sm ${
-              isAdmin ? "border-[#C9A84C]/40 bg-[#FBF7EE]" : "border-neutral-200 bg-white"
+              isAdmin ? "border-[#2563EB]/40 bg-[#FBF7EE]" : "border-neutral-200 bg-white"
             }`}
           >
             <div className="mb-1 flex items-center justify-between">
               <span className={`text-xs font-semibold ${isAdmin ? "text-[#9a7d2f]" : "text-neutral-700"}`}>
-                {isAdmin ? "KDP Mafia Support" : r.author_email ?? "You"}
+                {isAdmin ? "KDP Profit Machine Support" : r.author_email ?? "You"}
               </span>
               <span className="text-[10px] text-neutral-400">{new Date(r.created_at).toLocaleString()}</span>
             </div>

@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { resolveAdmin } from "@/lib/admin";
-import { isCoverV2Enabled } from "@/lib/cover-v2/config";
 import { getOrCreateSubscription } from "@/lib/billing";
 import { DashboardNav } from "@/components/dashboard/nav";
 import { SignOutButton } from "@/components/dashboard/sign-out-button";
@@ -10,8 +9,8 @@ import { SignOutButton } from "@/components/dashboard/sign-out-button";
 export const dynamic = "force-dynamic";
 
 const STATUS_COPY: Record<string, { title: string; body: string }> = {
-  suspended: { title: "Your account is suspended", body: "Access to KDP Mafia is temporarily paused. Contact support if you believe this is a mistake." },
-  banned: { title: "Your account has been banned", body: "Access to KDP Mafia has been revoked. Contact support if you believe this is a mistake." },
+  suspended: { title: "Your account is suspended", body: "Access to KDP Profit Machine is temporarily paused. Contact support if you believe this is a mistake." },
+  banned: { title: "Your account has been banned", body: "Access to KDP Profit Machine has been revoked. Contact support if you believe this is a mistake." },
   deleted: { title: "Your account has been closed", body: "This account is no longer active." },
 };
 
@@ -69,7 +68,6 @@ export default async function DashboardLayout({ children }: { children: React.Re
         <DashboardNav
           email={email}
           isAdmin={Boolean(admin)}
-          coverV2Enabled={isCoverV2Enabled()}
           hasAgency={hasAgency}
           hasReseller={hasReseller}
         />

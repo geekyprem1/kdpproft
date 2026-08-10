@@ -23,10 +23,10 @@ export default async function BundlePage() {
 
   return (
     <div className="mx-auto max-w-3xl">
-      <h1 className="text-2xl font-bold">Publishing Factory™</h1>
+      <h1 className="text-2xl font-bold">Profit Factory™</h1>
       <p className="mt-1 text-sm text-neutral-600">
         Create multiple publishing assets from one niche. Enter a topic, and the
-        Publishing Factory™ recommends the best book mix and produces them all —
+        Profit Factory™ recommends the best book mix and produces them all —
         with a suggested publishing order to maximize your KDP catalogue.
       </p>
 

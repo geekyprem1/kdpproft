@@ -25,7 +25,7 @@ export default async function NicheResearchPage() {
 
   return (
     <div className="mx-auto max-w-3xl">
-      <h1 className="text-2xl font-bold">Market Intelligence™</h1>
+      <h1 className="text-2xl font-bold">Profit Radar™</h1>
       <p className="mt-1 text-sm text-neutral-600">
         Know what sells before you build. Enter a topic and get 20 scored
         opportunities — demand, competition, evergreen &amp; monetization — with the

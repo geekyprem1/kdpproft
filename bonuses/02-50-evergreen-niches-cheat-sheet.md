@@ -1,8 +1,8 @@
 # BONUS #2 — 50 Evergreen Low-Content Niches Cheat-Sheet
 
-**Product:** KDP Mafia  
+**Product:** KDP Profit Machine  
 **Perceived value:** $37  
-**How to use:** Pick a row → open KDP Mafia → generate that book type → publish  
+**How to use:** Pick a row → open KDP Profit Machine → generate that book type → publish  
 **Evergreen meaning:** Sells year-round (not locked to one holiday). Pair with Bonus #3 for seasonal spikes.
 
 ---
@@ -17,7 +17,7 @@ This document gives you:
 2. **Title angles** that match how Amazon buyers search  
 3. **Series paths** so one niche becomes 3–5 books  
 4. **Validation questions** so you don’t publish random junk  
-5. **Fast-start packs** for your first week inside KDP Mafia  
+5. **Fast-start packs** for your first week inside KDP Profit Machine  
 
 ---
 
@@ -25,7 +25,7 @@ This document gives you:
 
 | Column | Meaning |
 |--------|---------|
-| Niche | Theme to type into KDP Mafia |
+| Niche | Theme to type into KDP Profit Machine |
 | Best book type | Generate this first |
 | Alt type | Book #2 in the same niche |
 | Audience | Who buys / gifts it |
@@ -41,7 +41,7 @@ Ask:
 2. Would someone gift this?  
 3. Is the niche specific enough for a cover to make sense?  
 4. Am I avoiding trademarks / celebrities / brand IP?  
-5. Does KDP Mafia support this book type for me right now?
+5. Does KDP Profit Machine support this book type for me right now?
 
 If you get 4–5 yes answers → generate.
 
@@ -259,7 +259,7 @@ Score each niche 1–5:
 | Easy to show on a cover | |
 | Clear gift audience | |
 | Not over-generic (“love”, “life”) | |
-| Matches a KDP Mafia book type you have | |
+| Matches a KDP Profit Machine book type you have | |
 | You can make 3 books in this niche | |
 | **Total** | **/25** |
 
@@ -364,7 +364,7 @@ That’s a **real catalog**, not random one-offs.
 
 ---
 
-## Copy/paste niche brief (for KDP Mafia)
+## Copy/paste niche brief (for KDP Profit Machine)
 
 Use this before generating:
 
@@ -401,7 +401,7 @@ Right now:
 
 1. Circle **5 niches** from this document  
 2. Assign each a book type  
-3. Generate book #1 in **KDP Mafia** today (Bonus #1)  
+3. Generate book #1 in **KDP Profit Machine** today (Bonus #1)  
 4. Save the other 4 for this week  
 
 ```
@@ -425,7 +425,7 @@ Before generating, spend 5 minutes on Amazon:
 4. Note if “large print”, “for kids”, “answer key” appear often  
 5. Make your title clear and competitive — not copied  
 
-Then generate your original book in **KDP Mafia**.
+Then generate your original book in **KDP Profit Machine**.
 
 ### Red flags on Amazon search
 - Results are dominated by one mega-brand IP → pick a different angle  
@@ -439,4 +439,4 @@ Then generate your original book in **KDP Mafia**.
 
 ---
 
-*— KDP Mafia Bonus Pack · Bonus #2*
+*— KDP Profit Machine Bonus Pack · Bonus #2*

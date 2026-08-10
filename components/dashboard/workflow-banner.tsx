@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 const STEPS: Array<{ n: string; label: string; sub: string; href: string }> = [
-  { n: "1", label: "Research", sub: "Market Intelligence™", href: "/dashboard/niche" },
-  { n: "2", label: "Create", sub: "Publishing Studio", href: "/dashboard/create" },
+  { n: "1", label: "Research", sub: "Profit Radar™", href: "/dashboard/niche" },
+  { n: "2", label: "Create", sub: "Book Studio", href: "/dashboard/create" },
   { n: "3", label: "Package", sub: "Launch Kit™", href: "/dashboard/books" },
   { n: "4", label: "Publish", sub: "Upload to KDP", href: "/dashboard/books" },
 ];

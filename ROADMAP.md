@@ -198,7 +198,7 @@ See [EBOOK_BLUEPRINT.md](EBOOK_BLUEPRINT.md). Re-sequenced to differentiate from
   also now used by `/api/books`) generates each via the existing generators;
   bundles (`bundles` + `books.bundle_id`, migration `0008`); ZIP + individual
   export; data-driven recommended publishing order. No duplicate generator code.
-- **KDF Mafia Monetization** ✅ COMPLETE — provider-agnostic billing
+- **KDP Profit Machine Monetization** ✅ COMPLETE — provider-agnostic billing
   (`lib/billing/`): plans (Starter/Pro/Publisher/Factory/Agency + Free), dynamic
   usage-based credits, subscriptions, usage tracking, refunds, feature gating,
   Billing dashboard, payment-provider stubs (JVZoo/W+/Stripe/Dodo/LemonSqueezy).

@@ -1,4 +1,4 @@
-# KDP Mafia — Free Bonus Pack
+# KDP Profit Machine — Free Bonus Pack
 
 > Delivered with every Front-End purchase on WarriorPlus.  
 > Total perceived value: **$195**
@@ -23,13 +23,13 @@
 
 ## How to deliver
 
-1. Zip all 5 PDFs → `KDP-Mafia-Bonus-Pack.zip`
-2. Link on thank-you page + inside the KDP Mafia dashboard
+1. Zip all 5 PDFs → `KDP-Profit-Machine-Bonus-Pack.zip`
+2. Link on thank-you page + inside the KDP Profit Machine dashboard
 3. Mention in day-0 / day-1 onboarding emails
 
 ## Branding
 
-Product name on all bonuses: **KDP Mafia**  
+Product name on all bonuses: **KDP Profit Machine**  
 Tagline: *Real books. Amazon-compliant. Built to sell.*
 
 ## Bonus images (sales page)

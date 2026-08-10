@@ -94,8 +94,8 @@ export function UserActions({
               { action: "grant_offer", offerKey },
               `Deliver "${offers.find((o) => o.key === offerKey)?.label}" to this user? Adds its credits and unlocks its features.`
             )}
-            className={`${btn} text-black hover:opacity-90`}
-            style={{ backgroundColor: "#C9A84C" }}
+            className={`${btn} text-white hover:opacity-90`}
+            style={{ backgroundColor: "#2563EB" }}
           >
             Grant Offer
           </button>

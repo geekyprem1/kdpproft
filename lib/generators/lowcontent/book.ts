@@ -29,7 +29,7 @@ export interface ResolvedLowContentConfig {
   hasPageNumbers: boolean;
 }
 
-const DEFAULT_AUTHOR = "KDP Mafia";
+const DEFAULT_AUTHOR = "KDP Profit Machine";
 
 export function resolveLowContentConfig(opts: LowContentOptions): ResolvedLowContentConfig {
   const product = LOW_CONTENT_PRODUCTS[opts.layout];
