@@ -1,0 +1,90 @@
+/* KDP Mafia bonus PDF styling — readable lead-magnet format */
+@page {
+  margin: 18mm 16mm;
+}
+
+body {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 12.5pt;
+  line-height: 1.55;
+  color: #1a1a1a;
+}
+
+h1 {
+  font-size: 26pt;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 12pt;
+  page-break-after: avoid;
+}
+
+h2 {
+  font-size: 18pt;
+  margin-top: 28pt;
+  margin-bottom: 10pt;
+  page-break-after: avoid;
+  border-bottom: 2px solid #222;
+  padding-bottom: 6pt;
+}
+
+h3 {
+  font-size: 14pt;
+  margin-top: 20pt;
+  margin-bottom: 8pt;
+  page-break-after: avoid;
+}
+
+p, li {
+  font-size: 12.5pt;
+  line-height: 1.55;
+}
+
+ul, ol {
+  margin-bottom: 14pt;
+}
+
+li {
+  margin-bottom: 6pt;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14pt 0 18pt;
+  font-size: 11pt;
+  page-break-inside: avoid;
+}
+
+th, td {
+  border: 1px solid #444;
+  padding: 8px 10px;
+  vertical-align: top;
+}
+
+th {
+  background: #f0f0f0;
+  font-weight: 700;
+}
+
+code, pre {
+  font-size: 11pt;
+  line-height: 1.45;
+}
+
+pre {
+  background: #f6f6f6;
+  border: 1px solid #ddd;
+  padding: 12pt;
+  white-space: pre-wrap;
+  page-break-inside: avoid;
+}
+
+hr {
+  margin: 24pt 0;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+strong {
+  font-weight: 700;
+}

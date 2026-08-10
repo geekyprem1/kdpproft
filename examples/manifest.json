@@ -1,0 +1,59 @@
+{
+  "generatedAt": "2026-06-22T09:02:57.970Z",
+  "books": [
+    {
+      "slug": "dinosaur-word-search",
+      "theme": "Dinosaurs",
+      "title": "Dinosaur Word Search",
+      "subtitle": "40 Prehistoric Puzzles with Complete Answer Key",
+      "author": "KDP Pocket AI Press",
+      "trim": "8.5x11",
+      "paper": "white",
+      "bleed": false,
+      "puzzleCount": 40,
+      "difficulty": "medium",
+      "pageCount": 83,
+      "spineWidthIn": 0.1869,
+      "allowsSpineText": true,
+      "skippedPlacements": 0,
+      "interior": "examples/dinosaur-word-search/dinosaur-word-search-interior.pdf",
+      "cover": "examples/dinosaur-word-search/dinosaur-word-search-cover.pdf"
+    },
+    {
+      "slug": "halloween-word-search",
+      "theme": "Halloween",
+      "title": "Halloween Word Search",
+      "subtitle": "40 Spooky Puzzles with Complete Answer Key",
+      "author": "KDP Pocket AI Press",
+      "trim": "8.5x11",
+      "paper": "white",
+      "bleed": false,
+      "puzzleCount": 40,
+      "difficulty": "medium",
+      "pageCount": 83,
+      "spineWidthIn": 0.1869,
+      "allowsSpineText": true,
+      "skippedPlacements": 0,
+      "interior": "examples/halloween-word-search/halloween-word-search-interior.pdf",
+      "cover": "examples/halloween-word-search/halloween-word-search-cover.pdf"
+    },
+    {
+      "slug": "christmas-word-search",
+      "theme": "Christmas",
+      "title": "Christmas Word Search",
+      "subtitle": "40 Festive Puzzles with Complete Answer Key",
+      "author": "KDP Pocket AI Press",
+      "trim": "8.5x11",
+      "paper": "white",
+      "bleed": false,
+      "puzzleCount": 40,
+      "difficulty": "medium",
+      "pageCount": 83,
+      "spineWidthIn": 0.1869,
+      "allowsSpineText": true,
+      "skippedPlacements": 0,
+      "interior": "examples/christmas-word-search/christmas-word-search-interior.pdf",
+      "cover": "examples/christmas-word-search/christmas-word-search-cover.pdf"
+    }
+  ]
+}

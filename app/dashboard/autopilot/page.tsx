@@ -1,0 +1,68 @@
+import Link from "next/link";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { AutopilotForm } from "@/components/dashboard/autopilot-form";
+
+export const dynamic = "force-dynamic";
+
+interface RunRow {
+  id: string;
+  niche: string;
+  status: string;
+  words_per_book: number;
+  trim_size: string;
+  created_at: string;
+}
+
+export default async function AutopilotPage() {
+  const supabase = await createSupabaseServerClient();
+  const { data } = await supabase
+    .from("autopilot_runs")
+    .select("id, niche, status, words_per_book, trim_size, created_at")
+    .order("created_at", { ascending: false })
+    .limit(12);
+  const runs = (data ?? []) as RunRow[];
+
+  return (
+    <div className="mx-auto max-w-2xl">
+      <h1 className="text-2xl font-bold">Book Autopilot</h1>
+      <p className="mt-1 text-sm text-neutral-600">
+        Answer a few questions and we&apos;ll write 3 complete books — with covers — for you.
+      </p>
+
+      <div className="mt-6">
+        <AutopilotForm />
+      </div>
+
+      <h2 className="mt-10 text-lg font-semibold">Past runs</h2>
+      {runs.length === 0 ? (
+        <p className="mt-3 text-sm text-neutral-500">
+          No runs yet. Books appear in your{" "}
+          <Link href="/dashboard/in-progress" className="underline">
+            Production Queue
+          </Link>{" "}
+          while they generate.
+        </p>
+      ) : (
+        <ul className="mt-3 space-y-2">
+          {runs.map((r) => (
+            <li key={r.id}>
+              <Link
+                href={`/dashboard/autopilot/${r.id}`}
+                className="flex items-center justify-between rounded-lg border border-neutral-200 p-4 hover:bg-neutral-50"
+              >
+                <div>
+                  <div className="font-medium">{r.niche}</div>
+                  <div className="text-xs text-neutral-500">
+                    {r.words_per_book.toLocaleString()} words · {r.trim_size} ·{" "}
+                    {new Date(r.created_at).toLocaleDateString()}
+                  </div>
+                </div>
+                <span className="text-xs capitalize text-neutral-500">{r.status}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}

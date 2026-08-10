@@ -1,0 +1,129 @@
+/**
+ * Publish-package orchestration: generate all artifacts (reusing OpenRouter),
+ * assemble the 6 text files, and build the downloadable ZIP.
+ */
+
+import JSZip from "jszip";
+import { generateKeywords, type KeywordSet } from "./keywords";
+import { recommendCategories } from "./categories";
+import { generateAltTitles } from "./titles";
+import { generateDescription, buildMetadataJson, type MetadataJson } from "./metadata";
+
+export interface PublishContext {
+  title: string;
+  subtitle?: string;
+  author: string;
+  bookType: string;
+  trim: string;
+  theme?: string;
+  difficulty?: string;
+  audience?: string;
+  pageCount?: number;
+  opportunityScore?: number | null;
+  existingDescription?: string;
+  existingKeywords?: string[];
+  bleed?: boolean;
+  // Inherited from the Publishing Profile:
+  publisher?: string;
+  language?: string;
+  copyright?: string;
+  aiDisclosure?: string;
+  priceOverride?: number | null;
+}
+
+export interface PackageData {
+  metadataJson: MetadataJson;
+  keywords: KeywordSet;
+  description: string;
+  categories: string[];
+  alternativeTitles: string[];
+}
+
+/** Run all generators (parallel) and assemble the package data. */
+export async function generatePackageData(ctx: PublishContext): Promise<PackageData> {
+  const [keywords, categories, alternativeTitles, description] = await Promise.all([
+    generateKeywords({ title: ctx.title, bookType: ctx.bookType, theme: ctx.theme, audience: ctx.audience, existing: ctx.existingKeywords }),
+    recommendCategories({ bookType: ctx.bookType, theme: ctx.theme, audience: ctx.audience }),
+    generateAltTitles({ title: ctx.title, bookType: ctx.bookType, theme: ctx.theme, audience: ctx.audience }),
+    generateDescription({ title: ctx.title, bookType: ctx.bookType, theme: ctx.theme, audience: ctx.audience, existing: ctx.existingDescription }),
+  ]);
+
+  const metadataJson = buildMetadataJson({
+    title: ctx.title,
+    subtitle: ctx.subtitle,
+    author: ctx.author,
+    publisher: ctx.publisher,
+    language: ctx.language,
+    trimSize: ctx.trim,
+    bookType: ctx.bookType,
+    aiDisclosure: ctx.aiDisclosure,
+    copyright: ctx.copyright,
+    opportunityScore: ctx.opportunityScore ?? null,
+    pageCount: ctx.pageCount,
+    priceOverride: ctx.priceOverride ?? null,
+    description,
+    keywords: keywords.primary,
+    categories,
+  });
+
+  return { metadataJson, keywords, description, categories, alternativeTitles };
+}
+
+export function buildChecklist(ctx: PublishContext): string {
+  const bleed = ctx.bookType === "coloring" ? "Bleed (edge-to-edge art)" : "No Bleed";
+  return [
+    `KDP PUBLISHING CHECKLIST — ${ctx.title}`,
+    "",
+    "[ ] Upload interior PDF (interior.pdf)",
+    `[ ] Upload cover PDF (cover.${ctx.bookType === "ebook" ? "png" : "pdf"})`,
+    `[ ] Select trim size: ${ctx.trim}`,
+    `[ ] Select bleed setting: ${bleed}`,
+    "[ ] Enter title (see metadata.json)",
+    "[ ] Enter subtitle (see metadata.json)",
+    "[ ] Enter 7 keywords (see keywords.txt)",
+    "[ ] Enter categories (see categories.txt)",
+    "[ ] Paste description (description.txt)",
+    "[ ] Set price (see suggested_price in metadata.json)",
+    "[ ] Review in KDP Previewer",
+    "[ ] Publish",
+    "",
+    "Tip: alternative title ideas are in book_titles.txt.",
+  ].join("\n");
+}
+
+/** The 6 plain-text/JSON artifact files. */
+export function packageFiles(ctx: PublishContext, data: PackageData): Array<{ name: string; content: string }> {
+  const keywordsTxt = [
+    "PRIMARY KEYWORDS (7):",
+    ...data.keywords.primary.map((k) => `- ${k}`),
+    "",
+    "LONG-TAIL KEYWORD IDEAS (20):",
+    ...data.keywords.longTail.map((k) => `- ${k}`),
+  ].join("\n");
+
+  return [
+    { name: "metadata.json", content: JSON.stringify(data.metadataJson, null, 2) },
+    { name: "keywords.txt", content: keywordsTxt },
+    { name: "description.txt", content: data.description },
+    { name: "categories.txt", content: data.categories.join("\n") },
+    { name: "book_titles.txt", content: data.alternativeTitles.join("\n") },
+    { name: "publish_checklist.txt", content: buildChecklist(ctx) },
+  ];
+}
+
+export interface PackageAsset {
+  name: string;
+  bytes: Uint8Array;
+}
+
+/** Build the publish-package ZIP from artifacts + book assets. */
+export async function buildPackageZip(opts: {
+  ctx: PublishContext;
+  data: PackageData;
+  assets: PackageAsset[];
+}): Promise<Uint8Array> {
+  const zip = new JSZip();
+  for (const f of packageFiles(opts.ctx, opts.data)) zip.file(f.name, f.content);
+  for (const a of opts.assets) zip.file(a.name, a.bytes);
+  return zip.generateAsync({ type: "uint8array" });
+}

@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+
+  /* ── KDP Mafia design tokens (mirror tailwind.config brand colors) ── */
+  --brand-dark: #0A0A0A;
+  --brand-gold: #C9A84C;
+  --brand-gold-dark: #B8973F;
+  --brand-gold-soft: #F3EBD3;
+  --brand-cream: #FBF7EE;
+  --kdp: #FF9900; /* Amazon KDP accent — publish actions only */
+  --success: #16A34A;
+  --warning: #D97706;
+  --danger: #DC2626;
+  --info: #2563EB;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Reusable brand utilities */
+.btn-gold {
+  background: linear-gradient(135deg, var(--brand-gold), var(--brand-gold-dark));
+  color: #000;
+}
+.btn-gold:hover { opacity: 0.9; }
+
+/* "Publish to Amazon KDP" call-to-action — the one place we nod to Amazon. */
+.btn-kdp {
+  background: var(--kdp);
+  color: #1a1a1a;
+  font-weight: 600;
+}
+.btn-kdp:hover { background: var(--kdp-dark, #E88B00); }
+
+/* Generation-progress animations (used on the in-progress list + detail). */
+@keyframes kdpm-shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+@keyframes kdpm-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .45; transform: scale(.85); } }
+@keyframes kdpm-spin { to { transform: rotate(360deg); } }
+@keyframes kdpm-indeterminate { 0% { left: -40%; } 100% { left: 100%; } }
