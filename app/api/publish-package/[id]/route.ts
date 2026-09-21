@@ -3,6 +3,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getBytes } from "@/lib/storage";
 import { buildPackageZip, type PackageAsset, type PackageData, type PublishContext } from "@/lib/publishing";
 import { buildEbookPdf } from "@/lib/export/pdf";
+import { TRIM_SIZES, type TrimSize } from "@/lib/pdf/kdp-specs";
 import { rateLimit, rateLimitResponse } from "@/lib/util/rate-limit";
 
 export const runtime = "nodejs";
@@ -14,7 +15,7 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(
 /** Gather interior + cover bytes for any book type. */
 async function bookAssets(
   supabase: Awaited<ReturnType<typeof createSupabaseServerClient>>,
-  book: { id: string; title: string; book_type: string; interior_key: string | null; cover_key: string | null; config: unknown }
+  book: { id: string; title: string; book_type: string; trim_size?: string | null; interior_key: string | null; cover_key: string | null; config: unknown }
 ): Promise<PackageAsset[]> {
   const assets: PackageAsset[] = [];
 
@@ -26,12 +27,18 @@ async function bookAssets(
     ]);
     const cfg = (book.config ?? {}) as { author?: string };
     const subtitle = ((metaRow?.book_metadata as unknown as { subtitle: string | null }[] | null)?.[0]?.subtitle) ?? undefined;
-    const pdf = await buildEbookPdf({
-      title: book.title,
-      subtitle,
-      author: cfg.author ?? "KDP Profit Machine",
-      chapters: (chapters ?? []).map((c) => ({ idx: c.idx, title: c.title, contentMd: c.content_md })),
-    });
+    // The interior PDF must match the trim the package declares in its metadata.
+    const trimRaw = book.trim_size ?? "6x9";
+    const trim = (trimRaw in TRIM_SIZES ? trimRaw : "6x9") as TrimSize;
+    const pdf = await buildEbookPdf(
+      {
+        title: book.title,
+        subtitle,
+        author: cfg.author ?? "KDP Profit Machine",
+        chapters: (chapters ?? []).map((c) => ({ idx: c.idx, title: c.title, contentMd: c.content_md })),
+      },
+      { trim }
+    );
     assets.push({ name: "interior.pdf", bytes: pdf });
     if (book.cover_key) assets.push({ name: "cover.png", bytes: await getBytes(book.cover_key) });
     return assets;

@@ -21,6 +21,13 @@ const MAX_BLACK = 0.22; // not large filled-black regions
 const MAX_MID = 0.12; // little grayscale → no shading
 const MAX_COLORED = 0.03; // essentially no color
 
+// Hard pixel floor: the printed page is 8.625×11.25in full-bleed, so this is
+// ~140 DPI. Anything smaller (a degenerate thumbnail, a broken upscaled image)
+// would print unacceptably soft even when its pixel statistics look clean.
+// Healthy FLUX (4MP) and placeholder (300 DPI) output both pass comfortably.
+const MIN_WIDTH_PX = 1200;
+const MIN_HEIGHT_PX = 1600;
+
 export function validateColoringImage(pngBytes: Uint8Array): ColoringImageCheck {
   const png = PNG.sync.read(Buffer.from(pngBytes));
   const data = png.data; // RGBA
@@ -30,7 +37,6 @@ export function validateColoringImage(pngBytes: Uint8Array): ColoringImageCheck 
   let mid = 0;
   let colored = 0;
   let total = 0;
-
   for (let p = 0; p < data.length; p += 4 * stride) {
     const r = data[p];
     const g = data[p + 1];
@@ -57,6 +63,9 @@ export function validateColoringImage(pngBytes: Uint8Array): ColoringImageCheck 
   };
 
   const reasons: string[] = [];
+  if (png.width < MIN_WIDTH_PX || png.height < MIN_HEIGHT_PX) {
+    reasons.push(`image too small to print well (${png.width}×${png.height}px)`);
+  }
   if (f.white < MIN_WHITE) reasons.push(`background not white enough (${(f.white * 100).toFixed(0)}%)`);
   if (f.black > MAX_BLACK) reasons.push(`too much filled black (${(f.black * 100).toFixed(0)}%)`);
   if (f.mid > MAX_MID) reasons.push(`grayscale/shading detected (${(f.mid * 100).toFixed(0)}%)`);

@@ -4,6 +4,7 @@ import { buildEbookPdf } from "@/lib/export/pdf";
 import { buildEpub } from "@/lib/export/epub";
 import { buildDocx } from "@/lib/export/docx";
 import type { EbookData } from "@/lib/generators/ebook/types";
+import { TRIM_SIZES, type TrimSize } from "@/lib/pdf/kdp-specs";
 import { rateLimit, rateLimitResponse } from "@/lib/util/rate-limit";
 
 export const runtime = "nodejs";
@@ -35,7 +36,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
 
   const { data: book } = await supabase
     .from("books")
-    .select("id, title, config, book_type, book_metadata(subtitle)")
+    .select("id, title, config, book_type, trim_size, book_metadata(subtitle)")
     .eq("id", id)
     .single();
   if (!book || book.book_type !== "ebook") {
@@ -57,8 +58,13 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
     chapters: (chapters ?? []).map((c) => ({ idx: c.idx, title: c.title, contentMd: c.content_md })),
   };
 
+  // The PDF must honor the trim the book declares (and KDP expects), not a
+  // hardcoded 6×9.
+  const trimRaw = (book as { trim_size?: string | null }).trim_size ?? "6x9";
+  const trim = (trimRaw in TRIM_SIZES ? trimRaw : "6x9") as TrimSize;
+
   let bytes: Uint8Array;
-  if (format === "pdf") bytes = await buildEbookPdf(data);
+  if (format === "pdf") bytes = await buildEbookPdf(data, { trim });
   else if (format === "epub") bytes = await buildEpub(data);
   else bytes = await buildDocx(data);
 

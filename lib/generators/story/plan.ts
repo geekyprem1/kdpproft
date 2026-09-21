@@ -73,7 +73,7 @@ Plan a picture book. Return JSON:
   }
 }
 
-function fallbackPages(plan: StoryPlan, count: number): StoryPageScript[] {
+function fallbackPages(plan: StoryPlan, count: number, heroName?: string): StoryPageScript[] {
   const beats = [
     "at home, happy and curious at the start of the day",
     "setting off on a small adventure",
@@ -90,8 +90,11 @@ function fallbackPages(plan: StoryPlan, count: number): StoryPageScript[] {
   ];
   return Array.from({ length: count }, (_, i) => {
     const beat = beats[i % beats.length];
+    const hero = heroName?.trim() || plan.title.replace(/^The\s+/i, "");
     return {
-      text: `And so the story of ${plan.setting} continued, page by page.`,
+      // Narration derived from the beat so every fallback page advances the
+      // story instead of repeating one identical sentence.
+      text: `In ${plan.setting}, ${hero} spent the day ${beat}.`,
       scenePrompt: beat,
     };
   });
@@ -107,7 +110,7 @@ export async function writePages(
   character: StoryCharacter,
   count: number
 ): Promise<StoryPageScript[]> {
-  const fb = fallbackPages(plan, count);
+  const fb = fallbackPages(plan, count, character.name);
   if (!isAiConfigured()) return fb;
 
   try {
@@ -128,7 +131,9 @@ Return JSON array of length ${count}: [{"text": string (narration), "scenePrompt
             const scenePrompt = typeof o.scenePrompt === "string" ? o.scenePrompt.trim() : "";
             return { text, scenePrompt };
           })
-          .filter((p) => p.scenePrompt.length > 0);
+          // A page needs BOTH narration and a scene — shipping an illustrated
+          // page with blank narration would render as an empty text block.
+          .filter((p) => p.scenePrompt.length > 0 && p.text.length > 0);
         if (pages.length < Math.min(4, count)) throw new Error("too few pages");
         return pages;
       },

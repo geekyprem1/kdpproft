@@ -140,7 +140,7 @@ type PackedCrossword = ReturnType<typeof packCrossword>;
  * Retry packing with reshuffled subsets (and a fallback-word mix) until the grid
  * has enough interlocking words, or return the densest candidate found.
  */
-function packCrosswordDense(pool: string[], rng: () => number): PackedCrossword {
+export function packCrosswordDense(pool: string[], rng: () => number): PackedCrossword {
   const mixed = Array.from(new Set([...pool, ...FALLBACK_WORDS]));
   let best: PackedCrossword = packCrossword(shuffle(mixed, rng).slice(0, WORDS_PER_PUZZLE));
   for (let attempt = 0; attempt < PACK_ATTEMPTS; attempt++) {
@@ -150,6 +150,17 @@ function packCrosswordDense(pool: string[], rng: () => number): PackedCrossword 
     const candidate = packCrossword(subset);
     if (candidate.placements.length > best.placements.length) best = candidate;
     if (best.placements.length >= MIN_PLACED_WORDS) break;
+  }
+  // Enforce the stated minimum: if the curated 14-word subsets never meshed
+  // (a letter-disjoint pool), keep growing the subset — more words give the
+  // placer more crossing opportunities — until the board actually interlocks.
+  // Without this, a sparse 1-word board could ship masquerading as a crossword.
+  if (best.placements.length < MIN_PLACED_WORDS) {
+    for (let size = WORDS_PER_PUZZLE + 4; size <= mixed.length; size += 4) {
+      const candidate = packCrossword(shuffle(mixed, rng).slice(0, size));
+      if (candidate.placements.length > best.placements.length) best = candidate;
+      if (best.placements.length >= MIN_PLACED_WORDS) break;
+    }
   }
   return best;
 }

@@ -40,6 +40,14 @@ export function clampCount(n: unknown, min: number, max: number, fallback: numbe
   return Math.min(max, Math.max(min, Math.round(v)));
 }
 
+/**
+ * Fresh random seed for each generated book. Generators hash only
+ * type|theme|difficulty|count by default, so without a unique per-book seed
+ * every user with the same config would get a byte-identical interior
+ * (mass duplicate content on Amazon).
+ */
+const randomSeed = (): number => Math.floor(Math.random() * 2 ** 31);
+
 export interface BookGenInput {
   bookType: PipelineBookType;
   theme?: string; // required for word_search & coloring
@@ -67,7 +75,7 @@ interface BuildPlan {
   trim?: string;
   config: Record<string, unknown>;
   metadata: { subtitle: string; description: string; keywords: string[]; generatedBy: string };
-  build: () => Promise<{ interior: InteriorResult; cover: CoverResult; pageCount: number }>;
+  build: (seed: number) => Promise<{ interior: InteriorResult; cover: CoverResult; pageCount: number }>;
 }
 
 /** Plan one book: validate inputs, generate metadata (+ word list), prepare a build closure. */
@@ -85,7 +93,7 @@ export async function planBook(input: BookGenInput): Promise<BuildPlan> {
     return {
       bookType: "coloring", theme, title, difficulty: ageGroup, puzzleCount: pageCount, wordSource: null,
       config: { ageGroup, style }, metadata,
-      build: () => buildColoringBook({ theme, title, subtitle: metadata.subtitle, ageGroup, style, pageCount, backText: metadata.description, author: input.author }),
+      build: (seed) => buildColoringBook({ theme, title, subtitle: metadata.subtitle, ageGroup, style, pageCount, backText: metadata.description, author: input.author, seed }),
     };
   }
 
@@ -141,7 +149,7 @@ export async function planBook(input: BookGenInput): Promise<BuildPlan> {
     return {
       bookType: "math", theme: "Math", title, difficulty, puzzleCount: practicePages, wordSource: null, trim: "8.5x11",
       config: { operation, difficulty, practicePages }, metadata,
-      build: () => buildMathBook({ operation, difficulty, pageCount: practicePages, title, author: input.author }),
+      build: (seed) => buildMathBook({ operation, difficulty, pageCount: practicePages, title, author: input.author, seed }),
     };
   }
 
@@ -159,7 +167,7 @@ export async function planBook(input: BookGenInput): Promise<BuildPlan> {
     return {
       bookType: "scramble", theme, title, difficulty: "standard", puzzleCount, wordSource: null, trim: "8.5x11",
       config: { puzzleCount }, metadata,
-      build: () => buildScrambleBook({ theme, puzzleCount, title, author: input.author }),
+      build: (seed) => buildScrambleBook({ theme, puzzleCount, title, author: input.author, seed }),
     };
   }
 
@@ -175,7 +183,7 @@ export async function planBook(input: BookGenInput): Promise<BuildPlan> {
     return {
       bookType: "cryptogram", theme: "Cryptograms", title, difficulty: "standard", puzzleCount, wordSource: null, trim: "8.5x11",
       config: { puzzleCount }, metadata,
-      build: () => buildCryptogramBook({ puzzleCount, title, author: input.author }),
+      build: (seed) => buildCryptogramBook({ puzzleCount, title, author: input.author, seed }),
     };
   }
 
@@ -192,7 +200,7 @@ export async function planBook(input: BookGenInput): Promise<BuildPlan> {
     return {
       bookType: "dot_to_dot", theme: "Connect the Dots", title, difficulty, puzzleCount: pageCount, wordSource: null, trim: "8.5x11",
       config: { difficulty, pageCount }, metadata,
-      build: () => buildDotDotBook({ difficulty, pageCount, title, author: input.author }),
+      build: (seed) => buildDotDotBook({ difficulty, pageCount, title, author: input.author, seed }),
     };
   }
 
@@ -210,7 +218,7 @@ export async function planBook(input: BookGenInput): Promise<BuildPlan> {
     return {
       bookType: "crossword", theme, title, difficulty: "standard", puzzleCount, wordSource: null, trim: "8.5x11",
       config: { puzzleCount }, metadata,
-      build: () => buildCrosswordBook({ theme, puzzleCount, title, author: input.author }),
+      build: (seed) => buildCrosswordBook({ theme, puzzleCount, title, author: input.author, seed }),
     };
   }
 
@@ -229,7 +237,7 @@ export async function planBook(input: BookGenInput): Promise<BuildPlan> {
     return {
       bookType: "activity", theme, title, difficulty, puzzleCount: pageCount, wordSource: null, trim: "8.5x11",
       config: { difficulty, pageCount }, metadata,
-      build: () => buildActivityBook({ theme, difficulty: difficulty as "easy" | "medium" | "hard", pageCount, title, author: input.author }),
+      build: (seed) => buildActivityBook({ theme, difficulty: difficulty as "easy" | "medium" | "hard", pageCount, title, author: input.author, seed }),
     };
   }
 
@@ -241,7 +249,7 @@ export async function planBook(input: BookGenInput): Promise<BuildPlan> {
     return {
       bookType: "maze", theme: input.theme?.trim() || "Maze", title, difficulty, puzzleCount: mazeCount, wordSource: null,
       config: {}, metadata,
-      build: () => buildMazeBook({ title, subtitle: metadata.subtitle, difficulty, mazeCount, backText: metadata.description, author: input.author }),
+      build: (seed) => buildMazeBook({ title, subtitle: metadata.subtitle, difficulty, mazeCount, backText: metadata.description, author: input.author, seed }),
     };
   }
 
@@ -254,7 +262,7 @@ export async function planBook(input: BookGenInput): Promise<BuildPlan> {
     return {
       bookType: "sudoku", theme: input.theme?.trim() || "Sudoku", title, difficulty, puzzleCount, wordSource: null,
       config: { largePrint }, metadata,
-      build: () => buildSudokuBook({ title, subtitle: metadata.subtitle, difficulty, puzzleCount, backText: metadata.description, author: input.author, largePrint }),
+      build: (seed) => buildSudokuBook({ title, subtitle: metadata.subtitle, difficulty, puzzleCount, backText: metadata.description, author: input.author, largePrint, seed }),
     };
   }
 
@@ -278,7 +286,7 @@ export async function planBook(input: BookGenInput): Promise<BuildPlan> {
   return {
     bookType: "word_search", theme, title, difficulty, puzzleCount, wordSource,
     config: { gridSize: cfg.gridSize, wordsPerPuzzle: cfg.wordsPerPuzzle, largePrint }, metadata,
-    build: () => buildWordSearchBook({ theme, title, subtitle: metadata.subtitle, puzzleCount, difficulty, words, backText: metadata.description, author: input.author, largePrint }),
+    build: (seed) => buildWordSearchBook({ theme, title, subtitle: metadata.subtitle, puzzleCount, difficulty, words, backText: metadata.description, author: input.author, largePrint, seed }),
   };
 }
 
@@ -330,7 +338,7 @@ export async function generateAndStoreBook(
 
   try {
     await progress("Generating", 40);
-    const book = await plan.build();
+    const book = await plan.build(randomSeed());
     await progress("Uploading", 80);
     const interiorKey = bookObjectKey(userId, bookId, "interior");
     const coverKey = bookObjectKey(userId, bookId, "cover");

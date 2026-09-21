@@ -7,6 +7,7 @@ import { escapeHtml } from "../../html/escape";
 import { buildInteriorPdf, buildCoverPdf, type InteriorResult, type CoverResult } from "../../pdf";
 import type { InteriorPageContent } from "../../pdf/templates/interior";
 import type { TrimSize } from "../../pdf/kdp-specs";
+import { padToEven } from "../notes-pad";
 import {
   DEFAULT_TRACING_PAGES,
   MAX_TRACING_PAGES,
@@ -44,8 +45,12 @@ function setItems(set: TracingSet, words?: string[]): string[] {
       return Array.from({ length: 26 }, (_, i) => String.fromCharCode(97 + i));
     case "numbers":
       return Array.from({ length: 10 }, (_, i) => String(i));
-    case "words":
-      return (words && words.length ? words : TRACING_WORDS).map((w) => w.trim()).filter(Boolean);
+    case "words": {
+      // A non-empty list of all-blank entries would otherwise leave `base`
+      // empty and crash the cycling math below — fall back to the bank.
+      const cleaned = (words && words.length ? words : TRACING_WORDS).map((w) => w.trim()).filter(Boolean);
+      return cleaned.length ? cleaned : TRACING_WORDS;
+    }
   }
 }
 
@@ -122,6 +127,7 @@ export interface TracingBookResult {
 export async function buildTracingBook(opts: TracingOptions): Promise<TracingBookResult> {
   const config = resolveTracingConfig(opts);
   const pages = buildTracingInteriorPages(config);
+  padToEven(pages);
   const pageCount = pages.length;
   const interior = await buildInteriorPdf({ trim: TRIM, pageCount, bleed: false }, pages);
   const cover = await buildCoverPdf({

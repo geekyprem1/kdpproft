@@ -114,7 +114,11 @@ export async function runAutopilotBooks(
       a.status = "failed";
       a.error = msg;
       firstError = firstError ?? msg;
-      await saveAngles();
+      try {
+        await saveAngles();
+      } catch (saveError) {
+        console.error("autopilot angle save failed:", saveError);
+      }
       continue;
     }
 
@@ -143,7 +147,14 @@ export async function runAutopilotBooks(
       a.error = null;
       doneCount++;
       firstBookId = firstBookId ?? result.id;
-      await saveAngles();
+      try {
+        await saveAngles();
+      } catch (saveError) {
+        // Progress persistence is best-effort: the book was really created and
+        // its credits are legitimately spent. Letting this throw would fall
+        // into the catch below and mark a successful book failed + refunded.
+        console.error("autopilot angle save failed:", saveError);
+      }
       try {
         await recordUsage(userId, "ebook", input.costPerBook, "completed", result.id, { topic: a.angle });
       } catch (usageError) {
@@ -155,12 +166,17 @@ export async function runAutopilotBooks(
       a.status = "failed";
       a.error = message;
       firstError = firstError ?? message;
-      await saveAngles();
-      // Give back this book's reserved credits — only successful books are charged.
+      // Refund BEFORE persisting the failure — if the status write throws, the
+      // user still gets their credits back instead of losing the reservation.
       try {
         await refund(userId, input.costPerBook, input.runId);
       } catch (refundError) {
         console.error("autopilot refund failed:", refundError);
+      }
+      try {
+        await saveAngles();
+      } catch (saveError) {
+        console.error("autopilot angle save failed:", saveError);
       }
       try {
         await recordUsage(userId, "ebook", input.costPerBook, "failed", undefined, { topic: a.angle });

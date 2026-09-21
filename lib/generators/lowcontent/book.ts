@@ -8,6 +8,7 @@ import { escapeHtml } from "../../html/escape";
 import { buildInteriorPdf, buildCoverPdf, type InteriorResult, type CoverResult } from "../../pdf";
 import type { InteriorPageContent } from "../../pdf/templates/interior";
 import type { TrimSize } from "../../pdf/kdp-specs";
+import { padToEven } from "../notes-pad";
 import { LAYOUT_BUILDERS } from "./layouts";
 import { LOW_CONTENT_PRODUCTS } from "./registry";
 import {
@@ -87,6 +88,7 @@ export interface LowContentBookResult {
 export async function buildLowContentBook(opts: LowContentOptions): Promise<LowContentBookResult> {
   const config = resolveLowContentConfig(opts);
   const interiorPages = buildLowContentInteriorPages(config);
+  padToEven(interiorPages);
   const pageCount = interiorPages.length;
 
   const interior = await buildInteriorPdf({ trim: config.trim, pageCount, bleed: false }, interiorPages);

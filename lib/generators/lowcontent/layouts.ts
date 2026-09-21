@@ -116,14 +116,17 @@ function plannerMonthly(): string {
 
 function habitTracker(): string {
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
-  const dayHead = days.map((d) => `<th style="border:1px solid ${RULE};width:0.19in;font-size:6.5pt;padding:2pt 0;text-align:center;color:#777">${d}</th>`).join("");
+  // Habit column takes a fixed 22% and the 31 day columns share the rest
+  // equally (2.5% each). Percentages (not the old hard 0.19in) let the table
+  // reflow on smaller trims instead of overflowing and clipping days 27–31.
+  const dayHead = days.map((d) => `<th style="border:1px solid ${RULE};width:2.5%;font-size:6.5pt;padding:2pt 0;text-align:center;color:#777">${d}</th>`).join("");
   const rows = Array.from({ length: 16 }, () =>
     `<tr><td style="border:1px solid ${RULE};height:0.32in"></td>${days.map(() => `<td style="border:1px solid ${FAINT}"></td>`).join("")}</tr>`
   ).join("");
   return fullColumn(`
     ${header("Habit Tracker", "MONTH: ______________")}
     <table style="width:100%;border-collapse:collapse;table-layout:fixed">
-      <thead><tr><th style="border:1px solid ${RULE};padding:4pt 6pt;font-size:9pt;text-align:left;background:#f4f4f4">Habit</th>${dayHead}</tr></thead>
+      <thead><tr><th style="border:1px solid ${RULE};width:22%;padding:4pt 6pt;font-size:9pt;text-align:left;background:#f4f4f4">Habit</th>${dayHead}</tr></thead>
       <tbody>${rows}</tbody>
     </table>`);
 }

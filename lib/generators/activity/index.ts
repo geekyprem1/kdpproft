@@ -48,36 +48,48 @@ interface Item {
 
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
-/** Build `n` items for one section using its generator's render bodies. */
+/**
+ * Build `n` items for one section using its generator's render bodies.
+ * `displayIndexOf(local)` maps a section-local index to the book-global puzzle
+ * number so interleaved sections don't all restart at "Puzzle 1".
+ */
 function buildSection(
   section: ActivitySection,
   n: number,
-  ctx: { theme: string; difficulty: "easy" | "medium" | "hard"; seed: number }
+  ctx: { theme: string; difficulty: "easy" | "medium" | "hard"; seed: number },
+  displayIndexOf: (localIndex: number) => number
 ): Item[] {
   const items: Item[] = [];
   if (section === "word_search") {
-    const cfg = resolveConfig({ theme: ctx.theme, puzzleCount: n, difficulty: ctx.difficulty, gridSize: 15 });
+    // Pass the activity's seed: without it, resolveConfig hashes only
+    // theme|difficulty|gridSize and every activity book (and the standalone
+    // word-search book) gets a byte-identical word-search section.
+    const cfg = resolveConfig({ theme: ctx.theme, puzzleCount: n, difficulty: ctx.difficulty, gridSize: 15, seed: ctx.seed });
     const puzzles = generatePuzzles(cfg);
     puzzles.forEach((p, i) => {
       const safe = { ...p, theme: escapeHtml(p.theme) };
-      items.push({ puzzle: renderPuzzleBody(safe, i), solution: renderSolutionBody(safe, i) });
+      const d = displayIndexOf(i);
+      items.push({ puzzle: renderPuzzleBody(safe, d), solution: renderSolutionBody(safe, d) });
     });
   } else if (section === "maze") {
     for (let i = 0; i < n; i++) {
       const m = generateMaze({ difficulty: ctx.difficulty, seed: ctx.seed + i * 101 });
-      items.push({ puzzle: renderMazePageBody(m, i), solution: renderMazeSolutionBody(m, i) });
+      const d = displayIndexOf(i);
+      items.push({ puzzle: renderMazePageBody(m, d), solution: renderMazeSolutionBody(m, d) });
     }
   } else if (section === "sudoku") {
     for (let i = 0; i < n; i++) {
       const p = generateSudoku({ difficulty: ctx.difficulty, seed: ctx.seed + i * 211 });
-      items.push({ puzzle: renderSudokuPuzzleBody(p, i), solution: renderSudokuSolutionBody(p, i) });
+      const d = displayIndexOf(i);
+      items.push({ puzzle: renderSudokuPuzzleBody(p, d), solution: renderSudokuSolutionBody(p, d) });
     }
   } else {
     // dot_to_dot
     const diff = ctx.difficulty as DotDotDifficulty;
     for (let i = 0; i < n; i++) {
       const shapeIdx = i % DOTDOT_SHAPE_COUNT;
-      items.push({ puzzle: dotDotPuzzleBody(shapeIdx, diff, i), solution: dotDotSolutionBody(shapeIdx, diff, i) });
+      const d = displayIndexOf(i);
+      items.push({ puzzle: dotDotPuzzleBody(shapeIdx, diff, d), solution: dotDotSolutionBody(shapeIdx, diff, d) });
     }
   }
   return items;
@@ -98,9 +110,14 @@ export async function buildActivityBook(opts: ActivityOptions): Promise<Activity
   const pageCount = Math.max(MIN_ACTIVITY_PAGES, Math.min(80, Math.round(opts.pageCount ?? 40)));
   const seed = opts.seed ?? hashSeed(`activity|${theme}|${difficulty}|${pageCount}`);
 
-  // Distribute puzzle pages across sections as evenly as possible.
+  // Distribute puzzle pages across sections as evenly as possible. The
+  // round-robin interleave below puts section `idx`'s `i`-th item at global
+  // position i*len+idx, so number its pages that way up front: every puzzle
+  // and solution in the book gets a unique, order-matching number.
   const per = Math.ceil(pageCount / active.length);
-  const bySection = active.map((s, idx) => buildSection(s, per, { theme, difficulty, seed: seed + idx * 1009 }));
+  const bySection = active.map((s, idx) =>
+    buildSection(s, per, { theme, difficulty, seed: seed + idx * 1009 }, (i) => i * active.length + idx)
+  );
 
   // Round-robin interleave puzzles (and keep solutions in the same order).
   const items: Item[] = [];

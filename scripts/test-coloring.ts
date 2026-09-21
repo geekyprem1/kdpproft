@@ -55,9 +55,17 @@ async function main() {
   });
 
   await test("image validation: clean line art passes", () => {
-    const img = makePng(120, 160, (x) => (x % 12 === 0 ? [0, 0, 0] : [255, 255, 255]));
+    // Sized above the validator's print-resolution floor so this tests the
+    // pixel statistics, not the size check.
+    const img = makePng(1200, 1600, (x) => (x % 12 === 0 ? [0, 0, 0] : [255, 255, 255]));
     const c = validateColoringImage(img);
     assert.ok(c.ok, `should pass: ${c.reasons.join(", ")}`);
+  });
+
+  await test("image validation: undersized image rejected", () => {
+    const img = makePng(120, 160, (x) => (x % 12 === 0 ? [0, 0, 0] : [255, 255, 255]));
+    const c = validateColoringImage(img);
+    assert.ok(!c.ok && c.reasons.some((r) => r.includes("too small")));
   });
 
   await test("image validation: gray background rejected", () => {

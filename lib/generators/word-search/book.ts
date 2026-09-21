@@ -121,13 +121,14 @@ export function buildInteriorPages(
       </div>`,
   });
 
-  // Instructions page
+  // Instructions page. Directions differ by difficulty (easy never places
+  // diagonal or backwards words), so the text must match what's solvable.
   pages.push({
     showPageNumber: false,
     html: `
       <h2>How to play</h2>
       <p>Each puzzle hides a list of words in a grid of letters. Words may run
-      horizontally, vertically, or diagonally${cfg.difficulty === "hard" ? ", forwards or backwards" : ""}.</p>
+      horizontally or vertically${cfg.difficulty === "easy" ? "" : ", or diagonally"}${cfg.difficulty === "hard" ? ", forwards or backwards" : ""}.</p>
       <p>Circle each word as you find it. When you are stuck, the full answer key
       is at the back of the book.</p>
       <p class="muted">Theme: ${cfg.theme} &middot; Difficulty: ${cfg.difficulty}</p>`,

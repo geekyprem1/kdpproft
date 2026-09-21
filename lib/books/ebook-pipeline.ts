@@ -8,6 +8,7 @@ import { requireMutationRow, requireMutationRows } from "../supabase/errors";
 import { putBytes, bookObjectKey } from "../storage";
 import { buildEbook } from "../generators/ebook";
 import { loadPublishingProfile, profileAuthor } from "../publishing/profile";
+import { TRIM_SIZES, type TrimSize } from "../pdf/kdp-specs";
 
 export interface EbookGenInput {
   topic: string;
@@ -45,7 +46,10 @@ export async function generateAndStoreEbook(
   // An explicit author (e.g. Autopilot) wins; otherwise inherit the
   // Publishing Profile author, same as before.
   const author = input.author?.trim() || profileAuthor(await loadPublishingProfile(userId));
-  const trimSize = input.trimSize?.trim() || "6x9";
+  // Unknown trims fall back to 6x9 so the cover always matches the interior.
+  const trimRaw = input.trimSize?.trim() || "6x9";
+  const trim = (trimRaw in TRIM_SIZES ? trimRaw : "6x9") as TrimSize;
+  const trimSize = trim;
   await progress("Outline & chapters", 20);
   const built = await buildEbook({
     topic: input.topic,
@@ -55,6 +59,7 @@ export async function generateAndStoreEbook(
     targetWords: input.targetWords,
     title: input.title,
     author,
+    trim,
   });
   await progress("Saving", 75);
 

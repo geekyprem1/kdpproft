@@ -6,12 +6,19 @@
 import { renderSafeMarkdown } from "../html/markdown";
 import { escapeHtml } from "../html/escape";
 import { renderPdfFromCss } from "../pdf";
+import { TRIM_SIZES, type TrimSize } from "../pdf/kdp-specs";
 import type { EbookData } from "../generators/ebook/types";
 
 const esc = escapeHtml;
 const md = renderSafeMarkdown;
 
-export async function buildEbookPdf(book: EbookData): Promise<Uint8Array> {
+export interface EbookPdfOptions {
+  /** KDP trim size; the PDF must match what the book row declares. */
+  trim?: TrimSize;
+}
+
+export async function buildEbookPdf(book: EbookData, opts: EbookPdfOptions = {}): Promise<Uint8Array> {
+  const { widthIn, heightIn } = TRIM_SIZES[opts.trim ?? "6x9"];
   const toc = book.chapters
     .map((c) => `<li><span class="ci">${esc(c.idx)}.</span> ${esc(c.title)}</li>`)
     .join("");
@@ -28,13 +35,13 @@ export async function buildEbookPdf(book: EbookData): Promise<Uint8Array> {
     .join("");
 
   const html = `<!doctype html><html><head><meta charset="utf-8"/><style>
-    @page { size: 6in 9in; margin: 0.75in; }
+    @page { size: ${widthIn}in ${heightIn}in; margin: 0.75in; }
     * { box-sizing: border-box; }
     body { margin: 0; font-family: Georgia, "Times New Roman", serif; color: #111; font-size: 11.5pt; line-height: 1.55; }
     h1, h2, h3 { font-family: Georgia, serif; }
     p { margin: 0 0 0.16in; text-align: justify; }
     ul, ol { margin: 0 0 0.16in 0.25in; }
-    .title-page { height: 7.5in; display: flex; flex-direction: column; justify-content: center; text-align: center; page-break-after: always; }
+    .title-page { height: ${heightIn - 1.5}in; display: flex; flex-direction: column; justify-content: center; text-align: center; page-break-after: always; }
     .title-page h1 { font-size: 30pt; margin: 0 0 0.1in; }
     .title-page .sub { font-size: 14pt; color: #555; font-style: italic; }
     .title-page .author { margin-top: 0.6in; font-size: 13pt; }

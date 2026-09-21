@@ -9,6 +9,7 @@ import { buildInteriorPdf, buildCoverPdf, type InteriorResult, type CoverResult 
 import type { InteriorPageContent } from "../../pdf/templates/interior";
 import { PRODUCTION_DEFAULTS } from "../../config/defaults";
 import { hashSeed } from "../../util/prng";
+import { padToEven } from "../notes-pad";
 import { buildColoringPrompt, buildSubjects } from "./prompt";
 import { generateLineArt, generateCoverArt, placeholderLineArt } from "./image";
 import { validateColoringImage } from "./validate-image";
@@ -175,6 +176,7 @@ export async function buildColoringBook(opts: ColoringBookOptions): Promise<Colo
   const config = resolveColoringConfig(opts);
   const pages = await generateColoringPages(config);
   const interiorPages = buildColoringInteriorPages(config, pages);
+  padToEven(interiorPages);
   const pageCount = interiorPages.length;
 
   const trim = PRODUCTION_DEFAULTS.trim;

@@ -161,14 +161,21 @@ export async function buildScrambleBook(opts: ScrambleOptions): Promise<Scramble
     });
   });
 
-  // Answer key
-  const answerHtml = puzzles
-    .map((pz, i) => `<div style="margin-bottom:0.12in"><b style="font-size:10pt">Puzzle ${i + 1}:</b> <span style="font-size:9.5pt">${pz.words.map((w, j) => `${j + 1}. ${escapeHtml(w.toUpperCase())}`).join("&nbsp;&nbsp; ")}</span></div>`)
-    .join("");
-  pages.push({
-    showPageNumber: false,
-    html: `<div style="height:100%"><h2 style="border-bottom:2px solid #333;padding-bottom:0.06in;margin-bottom:0.12in">Answer Key</h2>${answerHtml}</div>`,
-  });
+  // Answer key — 18 puzzles per page. Each row wraps to ~2 lines (12 answers),
+  // so a single fixed page holds ~20; anything beyond that would be silently
+  // clipped by the page's overflow:hidden. Paginate instead.
+  const ANSWERS_PER_PAGE = 18;
+  for (let start = 0; start < puzzles.length; start += ANSWERS_PER_PAGE) {
+    const chunk = puzzles.slice(start, start + ANSWERS_PER_PAGE);
+    const range = puzzles.length > ANSWERS_PER_PAGE ? ` (${start + 1}–${start + chunk.length})` : "";
+    const answerHtml = chunk
+      .map((pz, i) => `<div style="margin-bottom:0.12in"><b style="font-size:10pt">Puzzle ${start + i + 1}:</b> <span style="font-size:9.5pt">${pz.words.map((w, j) => `${j + 1}. ${escapeHtml(w.toUpperCase())}`).join("&nbsp;&nbsp; ")}</span></div>`)
+      .join("");
+    pages.push({
+      showPageNumber: false,
+      html: `<div style="height:100%"><h2 style="border-bottom:2px solid #333;padding-bottom:0.06in;margin-bottom:0.12in">Answer Key${range}</h2>${answerHtml}</div>`,
+    });
+  }
 
   padToKdpMinimum(pages);
   const pageCount = pages.length;

@@ -21,9 +21,17 @@ const DOT_COUNT: Record<DotDotDifficulty, number> = { easy: 14, medium: 24, hard
 
 interface Pt { x: number; y: number }
 
-const SHAPES: Array<{ name: string; pts: (n: number) => Pt[] }> = [
+/**
+ * `closed` marks shapes whose outline ends where it started — the solution may
+ * draw the final N→1 segment. The spiral is an open curve: connecting the last
+ * dot back to the first would draw a bogus chord across the picture.
+ */
+interface Shape { name: string; closed: boolean; pts: (n: number) => Pt[] }
+
+const SHAPES: Shape[] = [
   {
     name: "Star",
+    closed: true,
     pts: (n) => {
       const spikes = Math.max(5, Math.round(n / 2));
       const out: Pt[] = [];
@@ -37,6 +45,7 @@ const SHAPES: Array<{ name: string; pts: (n: number) => Pt[] }> = [
   },
   {
     name: "Heart",
+    closed: true,
     pts: (n) => Array.from({ length: n }, (_, i) => {
       const t = (i / n) * Math.PI * 2;
       const x = 16 * Math.sin(t) ** 3;
@@ -46,6 +55,7 @@ const SHAPES: Array<{ name: string; pts: (n: number) => Pt[] }> = [
   },
   {
     name: "Flower",
+    closed: true,
     pts: (n) => Array.from({ length: n }, (_, i) => {
       const t = (i / n) * Math.PI * 2;
       const r = 22 + 22 * Math.cos(6 * t);
@@ -54,6 +64,7 @@ const SHAPES: Array<{ name: string; pts: (n: number) => Pt[] }> = [
   },
   {
     name: "Sun",
+    closed: true,
     pts: (n) => Array.from({ length: n }, (_, i) => {
       const t = (i / n) * Math.PI * 2;
       const r = 30 + 14 * (i % 2);
@@ -62,6 +73,7 @@ const SHAPES: Array<{ name: string; pts: (n: number) => Pt[] }> = [
   },
   {
     name: "Diamond",
+    closed: true,
     // Walk the perimeter so we always emit exactly `n` dots (round(n/4)*4 drifted).
     pts: (n) => {
       const corners = [{ x: 50, y: 6 }, { x: 90, y: 50 }, { x: 50, y: 94 }, { x: 10, y: 50 }];
@@ -77,6 +89,7 @@ const SHAPES: Array<{ name: string; pts: (n: number) => Pt[] }> = [
   },
   {
     name: "Spiral",
+    closed: false,
     pts: (n) => Array.from({ length: n }, (_, i) => {
       const t = (i / n) * Math.PI * 5;
       const r = 6 + (i / n) * 40;
@@ -103,9 +116,9 @@ export function dotDotPuzzleBody(i: number, difficulty: DotDotDifficulty, index:
   return `<div style="display:flex;flex-direction:column;height:100%">
     <div style="display:flex;justify-content:space-between;border-bottom:2px solid #333;padding-bottom:0.06in;margin-bottom:0.1in">
       <div style="font-size:12pt;font-weight:bold;text-transform:uppercase;letter-spacing:0.1em">Connect the Dots ${index + 1}</div>
-      <div style="font-size:10pt;color:#888">Connect 1 → ${DOT_COUNT[difficulty]}</div>
+      <div style="font-size:10pt;color:#888">${connectInstruction(difficulty, shape.closed)}</div>
     </div>
-    <div style="flex:1;min-height:0">${shapeSvg(shape.pts(DOT_COUNT[difficulty]), false)}</div>
+    <div style="flex:1;min-height:0">${shapeSvg(shape.pts(DOT_COUNT[difficulty]), false, shape.closed)}</div>
   </div>`;
 }
 
@@ -114,21 +127,29 @@ export function dotDotSolutionBody(i: number, difficulty: DotDotDifficulty, inde
   const shape = SHAPES[i % SHAPES.length];
   return `<div style="display:flex;flex-direction:column;height:100%">
     <div style="font-size:11pt;color:#888;margin-bottom:0.1in">Connect the Dots ${index + 1} — ${shape.name}</div>
-    <div style="flex:1;min-height:0">${shapeSvg(shape.pts(DOT_COUNT[difficulty]), true)}</div>
+    <div style="flex:1;min-height:0">${shapeSvg(shape.pts(DOT_COUNT[difficulty]), true, shape.closed)}</div>
   </div>`;
 }
 
-function shapeSvg(pts: Pt[], solution: boolean): string {
+function shapeSvg(pts: Pt[], solution: boolean, closed = true): string {
   const dots = pts
     .map((p, i) => {
       const num = solution ? "" : `<text x="${(p.x + 3.2).toFixed(1)}" y="${(p.y - 2).toFixed(1)}" font-size="3.4" fill="#333" font-family="Arial">${i + 1}</text>`;
       return `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${i === 0 ? 1.6 : 1.1}" fill="${i === 0 ? "#111" : "#444"}"/>${num}`;
     })
     .join("");
+  const ptsAttr = pts.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ");
+  // A polygon implicitly closes the path (N→1); a polyline leaves open curves
+  // open so an open shape (spiral) doesn't get a spurious closing chord.
   const line = solution
-    ? `<polygon points="${pts.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ")}" fill="none" stroke="#111" stroke-width="0.8"/>`
+    ? `<${closed ? "polygon" : "polyline"} points="${ptsAttr}" fill="none" stroke="#111" stroke-width="0.8"/>`
     : "";
   return `<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%">${line}${dots}</svg>`;
+}
+
+/** Instruction line: closed shapes need the solver to join the last dot to the first. */
+function connectInstruction(difficulty: DotDotDifficulty, closed: boolean): string {
+  return closed ? `Connect 1 → ${DOT_COUNT[difficulty]}, then back to 1` : `Connect 1 → ${DOT_COUNT[difficulty]}`;
 }
 
 export async function buildDotDotBook(opts: DotDotOptions): Promise<{ pageCount: number; pages: number; interior: InteriorResult; cover: CoverResult }> {
@@ -163,18 +184,27 @@ export async function buildDotDotBook(opts: DotDotOptions): Promise<{ pageCount:
       html: `<div style="display:flex;flex-direction:column;height:100%">
         <div style="display:flex;justify-content:space-between;border-bottom:2px solid #333;padding-bottom:0.06in;margin-bottom:0.1in">
           <div style="font-size:12pt;font-weight:bold;text-transform:uppercase;letter-spacing:0.1em">Puzzle ${i + 1}</div>
-          <div style="font-size:10pt;color:#888">Connect 1 → ${DOT_COUNT[difficulty]}</div>
+          <div style="font-size:10pt;color:#888">${connectInstruction(difficulty, shape.closed)}</div>
         </div>
-        <div style="flex:1;min-height:0">${shapeSvg(shape.pts(n), false)}</div>
+        <div style="flex:1;min-height:0">${shapeSvg(shape.pts(n), false, shape.closed)}</div>
       </div>`,
     });
   }
 
-  // Solutions
-  const solHtml = `<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.15in">${order
-    .map((si, i) => `<div style="border:1px solid #eee;padding:4pt"><div style="font-size:8pt;color:#888">${i + 1}. ${SHAPES[si].name}</div><div style="height:1.6in">${shapeSvg(SHAPES[si].pts(n), true)}</div></div>`)
-    .join("")}</div>`;
-  pages.push({ showPageNumber: false, html: `<div style="height:100%"><h2 style="border-bottom:2px solid #333;padding-bottom:0.06in;margin-bottom:0.12in">Solutions</h2>${solHtml}</div>` });
+  // Solutions — 12 per page (3 columns × 4 rows ≈ 8in incl. the heading) so the
+  // section paginates instead of overflowing the fixed-height PDF page and
+  // silently clipping the last solutions.
+  const SOLUTIONS_PER_PAGE = 12;
+  for (let start = 0; start < order.length; start += SOLUTIONS_PER_PAGE) {
+    const chunk = order.slice(start, start + SOLUTIONS_PER_PAGE);
+    const first = start + 1;
+    const last = start + chunk.length;
+    const range = order.length > SOLUTIONS_PER_PAGE ? ` (${first}–${last})` : "";
+    const solHtml = `<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.15in">${chunk
+      .map((si, i) => `<div style="border:1px solid #eee;padding:4pt"><div style="font-size:8pt;color:#888">${start + i + 1}. ${SHAPES[si].name}</div><div style="height:1.6in">${shapeSvg(SHAPES[si].pts(n), true, SHAPES[si].closed)}</div></div>`)
+      .join("")}</div>`;
+    pages.push({ showPageNumber: false, html: `<div style="height:100%"><h2 style="border-bottom:2px solid #333;padding-bottom:0.06in;margin-bottom:0.12in">Solutions${range}</h2>${solHtml}</div>` });
+  }
 
   padToKdpMinimum(pages);
   const finalPageCount = pages.length;

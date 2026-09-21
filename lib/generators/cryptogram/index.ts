@@ -208,14 +208,21 @@ export async function buildCryptogramBook(opts: CryptogramOptions): Promise<{ pa
     });
   }
 
-  // Answer key
-  const ansHtml = solutions
-    .map((q, i) => `<div style="margin-bottom:0.1in;font-size:9.5pt"><b>${i + 1}.</b> ${escapeHtml(q.text)} — <i>${escapeHtml(q.author)}</i></div>`)
-    .join("");
-  pages.push({
-    showPageNumber: false,
-    html: `<div style="height:100%"><h2 style="border-bottom:2px solid #333;padding-bottom:0.06in;margin-bottom:0.12in">Answer Key</h2>${ansHtml}</div>`,
-  });
+  // Answer key — 36 solutions per page. Quotes run 1–3 lines each; a single
+  // fixed page holds ~40 and anything beyond that would be clipped by the
+  // page's overflow:hidden. Paginate instead.
+  const ANSWERS_PER_PAGE = 36;
+  for (let start = 0; start < solutions.length; start += ANSWERS_PER_PAGE) {
+    const chunk = solutions.slice(start, start + ANSWERS_PER_PAGE);
+    const range = solutions.length > ANSWERS_PER_PAGE ? ` (${start + 1}–${start + chunk.length})` : "";
+    const ansHtml = chunk
+      .map((q, i) => `<div style="margin-bottom:0.1in;font-size:9.5pt"><b>${start + i + 1}.</b> ${escapeHtml(q.text)} — <i>${escapeHtml(q.author)}</i></div>`)
+      .join("");
+    pages.push({
+      showPageNumber: false,
+      html: `<div style="height:100%"><h2 style="border-bottom:2px solid #333;padding-bottom:0.06in;margin-bottom:0.12in">Answer Key${range}</h2>${ansHtml}</div>`,
+    });
+  }
 
   padToKdpMinimum(pages);
   const pageCount = pages.length;

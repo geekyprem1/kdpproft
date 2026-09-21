@@ -88,9 +88,17 @@ Return JSON: {"score": number 0..1, "sameCharacter": boolean, "reasons": ["short
   const reasons = Array.isArray(raw.reasons)
     ? (raw.reasons.filter((r) => typeof r === "string") as string[])
     : [];
+  // `sameCharacter` may come back as the string "false" (a common LLM quirk),
+  // which would be truthy under Boolean(); coerce strictly to a real boolean.
+  const sameCharacter =
+    typeof raw.sameCharacter === "boolean"
+      ? raw.sameCharacter
+      : typeof raw.sameCharacter === "string"
+      ? raw.sameCharacter.toLowerCase().trim() === "true"
+      : score >= 0.7;
   return {
     score,
-    sameCharacter: Boolean(raw.sameCharacter ?? score >= 0.7),
+    sameCharacter,
     reasons,
     model,
   };

@@ -60,7 +60,10 @@ async function runFlux(prompt: string, seed: number, token: string): Promise<Uin
             aspect_ratio: "3:4",
             num_outputs: 1,
             output_format: "png",
-            megapixels: "1",
+            // FLUX tops out at 4MP (~1732×2309 at 3:4 ≈ 200 DPI on a full-bleed
+            // 8.625×11.25 page). Still short of KDP's 300 DPI, but 1MP printed
+            // at ~100 DPI was visibly soft.
+            megapixels: "4",
             seed,
           },
         }),
@@ -144,6 +147,8 @@ export async function placeholderLineArt(opts: {
       </g>
       <text x="300" y="760" font-family="Arial" font-size="20" text-anchor="middle" fill="#000">${subject.slice(0, 40)}</text>
     </svg></body></html>`;
-  // render to a PNG bitmap (so validation has real pixels to analyze)
-  return renderPng(html, { widthIn: 6, heightIn: 8, dpi: 110 });
+  // render to a PNG bitmap (so validation has real pixels to analyze) at the
+  // full-bleed coloring-page size and KDP's 300 DPI so offline placeholders
+  // don't drag the print quality down.
+  return renderPng(html, { widthIn: 8.625, heightIn: 11.25, dpi: 300 });
 }
